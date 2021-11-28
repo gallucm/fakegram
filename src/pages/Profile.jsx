@@ -1,9 +1,10 @@
 import React from 'react'
+import { ProfileSection } from '../components/profile/ProfileSection'
 
 export const Profile = () => {
     return (
         <div>
-            <h2>Profile Page</h2>
+            <ProfileSection/>
         </div>
     )
 }

@@ -1,0 +1,58 @@
+
+@font-face {
+  font-family: 'Billabong';
+  font-style: normal;
+  font-weight: normal;
+  src: url('../../assets/fonts/Billabong.woff');
+}
+
+
+header {
+  height: 4rem;
+  width: 80%;
+  margin: auto;
+  margin-top: 2rem;
+  border-bottom: 1px solid rgba(243, 243, 243, 0.8);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.logo {
+  font-family: 'Billabong';
+  font-size: 2.5rem;
+  margin-top: 2rem;
+  color: black;
+}
+
+.logo:hover{
+  cursor: pointer;
+}
+
+.input_search {
+  height: 1.2rem;
+  border: none;
+  border-radius: 0.5rem;
+  border: 1px solid #cccc;
+  padding: 0.5rem;
+  font-size: 1rem;
+  color: gray;
+}
+
+.input_search:focus {
+  outline: none;
+  border: 1px solid gray;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.avatar:hover {
+  cursor: pointer;
+}
