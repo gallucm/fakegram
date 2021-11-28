@@ -3,8 +3,8 @@ import { ProfileSection } from '../components/profile/ProfileSection'
 
 export const Profile = () => {
     return (
-        <div>
+        <>
             <ProfileSection/>
-        </div>
+        </>
     )
 }

@@ -25,7 +25,7 @@ export const MainNavigation = () => {
     return (
         <header className={classes.header}>
             <h1 className={classes.logo} onClick={handleHomeClick}>Fakegram</h1>
-            <input type="text" className={classes.input_search} ref={inputSearchRef} onKeyUp={handleSearchClick} />
+            <input type="text" className={classes.input_search} ref={inputSearchRef} placeholder="Busca" onKeyUp={handleSearchClick} />
             <div className={classes.dropdown}>
                 <img src={avatar} alt="Avatar" className={classes.avatar} />
                 <div className={classes.drowpdown__content}>
@@ -33,7 +33,7 @@ export const MainNavigation = () => {
                         <Link to="/p/1234">Perfil</Link>
                     </div>
                     <div className={classes.link}>
-                        <Link to="/account">Ajustes</Link>
+                        <Link to="/account">Configuración</Link>
                     </div>
                     <div className={classes.link} onClick={handleLogoutClick}>
                         Salir
