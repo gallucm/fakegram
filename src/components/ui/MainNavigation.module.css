@@ -18,6 +18,20 @@ header {
   width: 68%;
 }
 
+.icons {
+  display: flex;
+  margin: auto;
+}
+
+.icon{
+  width: 35px !important;
+  height: 35px !important;
+  margin-bottom: 1.5rem;
+  margin-right: 1rem;
+
+  cursor: pointer;
+}
+
 .logo {
   font-family: 'Billabong';
   font-weight: 300;
@@ -38,6 +52,7 @@ header {
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   text-align: center;
   margin-top: -1rem;
+  margin-left: 8rem;
 }
 
 .link{
@@ -59,8 +74,7 @@ header {
   display: none;
 }
 
-
-.dropdown:hover .drowpdown__content {
+.show {
   display: block;
 }
 
@@ -77,6 +91,7 @@ header {
   width: 12rem;
   font-size: 1rem;
   margin-bottom: 2rem;
+  margin-left: 4rem;
   color: gray;
 }
 

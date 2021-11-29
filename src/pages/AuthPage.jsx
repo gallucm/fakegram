@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const Register = () => {
+export const AuthPage = () => {
     return (
         <div>
-            <h1>Register Page</h1>
+            <h1>Auth Page</h1>
         </div>
     )
 }

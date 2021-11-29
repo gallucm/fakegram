@@ -2,6 +2,7 @@ import classes from './ProfileSection.module.css';
 import avatar from '../../assets/images/avatar.png';
 
 export const ProfileSection = () => {
+
     return (
         <>
             <div className={classes.profile_section_container}>
@@ -15,17 +16,27 @@ export const ProfileSection = () => {
                     </section>
                     <section className={classes.profile_section_container__data__section2}>
                         <div className={classes.profile_section_container__data__section2__item}>
-                           <p><strong>122</strong>  publicaciones</p>
+                            <p><strong>122</strong>  publicaciones</p>
                         </div>
                         <div className={classes.profile_section_container__data__section2__item}>
-                           <p><strong>205</strong>  seguidores</p>
+                            <p><strong>205</strong>  seguidores</p>
                         </div>
                         <div className={classes.profile_section_container__data__section2__item}>
-                           <p><strong>201</strong>  seguidos</p>
+                            <p><strong>201</strong>  seguidos</p>
                         </div>
                     </section>
                     <section className={classes.profile_section_container__data__section3}>
                         <strong><p>Cristian Galluccio</p></strong>
+                        <span className={classes.profile_section_container__data__section3__item}>
+                            <p>
+                                Buenos Aires, Argentina
+                                <br />
+                                Programador
+                                <br />
+                                Enjoy
+                            </p>
+                        </span>
+
                     </section>
                 </div>
             </div>

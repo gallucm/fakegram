@@ -27,11 +27,11 @@
 }
 
 .profile_section_container__data__section1,
-.profile_section_container__data__section2,
-.profile_section_container__data__section3 {
+.profile_section_container__data__section2 {
     display: flex;
     flex-direction: row;
 }
+
 
 .profile_section_container__data__section2__item{
     margin-right: 2rem;
@@ -43,6 +43,10 @@
 .profile_section_container__data__section2__item p{
     font-weight: 500;
     font-family: Times, serif;
+}
+
+.profile_section_container__data__section3__item p{
+    margin-top: -0.5rem;
 }
 
 .profile_section_container__data h2{
