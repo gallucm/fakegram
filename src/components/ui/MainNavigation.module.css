@@ -69,6 +69,13 @@ header {
   font-weight: 700;
 }
 
+:link {
+  color: blue;
+}
+
+.link_default {
+  color: black;
+}
 
 .link::selection .drowpdown__content{
   display: none;

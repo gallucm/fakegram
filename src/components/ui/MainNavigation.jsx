@@ -43,14 +43,18 @@ export const MainNavigation = () => {
             <input type="text" className={classes.input_search} ref={inputSearchRef} placeholder="Busca" onKeyUp={handleSearchClick} />
             <div className={classes.dropdown}>
                 <div className={classes.icons}>
-                    <HomeOutlinedIcon className={classes.icon} titleAccess="Inicio"/>
-                    <MapsUgcOutlinedIcon className={classes.icon} titleAccess="Mensajes"/>
+                    <Link to="/" className={classes.link_default}>
+                        <HomeOutlinedIcon className={classes.icon} titleAccess="Inicio"/>
+                    </Link>
+                    <Link to="/messages" className={classes.link_default}>
+                        <MapsUgcOutlinedIcon className={classes.icon} titleAccess="Mensajes"/>
+                    </Link>
                     <FavoriteBorderIcon className={classes.icon} titleAccess="Notificaciones"/>
                     <img src={avatar} alt="Avatar" className={classes.avatar} onClick={showOptionsMenuHandler} title="Menu"/>
                 </div>
                 <div className={classes.drowpdown__content}>
                     <div className={classes.link}>
-                        <Link to="/p/1234" onClick={hideOptionsMenuHandler}>Perfil</Link>
+                        <Link to="/gallucm" onClick={hideOptionsMenuHandler}>Perfil</Link>
                     </div>
                     <div className={classes.link}>
                         <Link to="/account" onClick={hideOptionsMenuHandler}>Configuración</Link>

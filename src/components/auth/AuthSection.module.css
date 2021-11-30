@@ -1,0 +1,27 @@
+
+
+.auth_section{
+    border: 0.1px solid rgba(243, 243, 243, 1);
+    border-radius: 5px;
+    margin: auto;
+    margin-top: 4rem;
+    width: 350px;
+    height: 450px;
+    text-align: center;
+}
+
+.auth_section__form__user_input{
+    border: 1px solid rgba(243, 243, 243, 1) !important;
+    border-radius: 5px;
+    margin-top: 2rem !important;
+    margin-bottom: 1rem;
+    width: 80%;
+    height: 2.5rem;
+    
+    padding-left: 1rem;
+}
+
+.auth_section__form__user_input:focus{
+    outline: none;
+    border: 1px solid #ccc !important;
+}

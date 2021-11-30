@@ -1,9 +1,9 @@
 import React from 'react'
 
-export const auth = () => {
+export const MessagesPage = () => {
     return (
         <div>
-            <h1>Auth component</h1>
+            <h1>Messages Page</h1>
         </div>
     )
 }

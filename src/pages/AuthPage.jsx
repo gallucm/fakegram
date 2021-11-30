@@ -1,9 +1,10 @@
 import React from 'react'
+import { AuthSection } from '../components/auth/AuthSection'
 
 export const AuthPage = () => {
     return (
-        <div>
-            <h1>Auth Page</h1>
-        </div>
+        <>
+            <AuthSection/>
+        </>
     )
 }
