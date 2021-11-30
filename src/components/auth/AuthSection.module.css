@@ -21,6 +21,8 @@
     font-size: 3rem;
     font-weight: 300;
     margin-top: 0.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
 .auth_section__form {
@@ -29,6 +31,7 @@
 
 .auth_section__form__user_input,
 .auth_section__form__password_input{
+    background-color: #fafafa;
     border: 1px solid rgba(243, 243, 243, 1) !important;
     border-radius: 5px;
     margin-bottom: 1rem;
