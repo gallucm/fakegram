@@ -8,9 +8,12 @@ import { Link } from 'react-router-dom';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
+import { useDispatch } from 'react-redux';
+import { authActions } from '../../store/auth';
 
 export const MainNavigation = () => {
     const history = useHistory();
+    const dispatch = useDispatch();
 
     const inputSearchRef = useRef();
 
@@ -23,9 +26,7 @@ export const MainNavigation = () => {
     }
 
     const handleLogoutClick = () => {
-        hideOptionsMenuHandler();
-        // history.replace('/login');
-        localStorage.removeItem('fToken');
+        dispatch(authActions.logout());
     }
 
     const showOptionsMenuHandler = () => {
