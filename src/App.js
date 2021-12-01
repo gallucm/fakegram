@@ -1,23 +1,28 @@
-import React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
 
 import { Account } from './pages/AccountPage';
 import { AuthPage } from './pages/AuthPage';
 import { Index } from './pages/MainPage';
 import { MessagesPage } from './pages/MessagesPage';
-import { NotFound } from './pages/NotFoundPage';
 import { Profile } from './pages/ProfilePage';
+import { PrivateRoute } from './router/PrivateRoute';
+import { PublicRoute } from './router/PublicRoute';
 
 export const App = () => {
+
   return (
-      <Switch>
-        <Route exact path="/" component={Index} />
-        <Route exact path="/account/detail" component={Account} />
-        <Route exact path="/login" component={AuthPage} />
-        <Route exact path="/register" component={AuthPage} />
-        <Route exact path="/messages" component={MessagesPage} />
-        <Route exact path="/:id" component={Profile} />
-        <Route path="*" component={NotFound} />
-      </Switch>
+    <Switch>
+
+      <PublicRoute exact path="/login" isAuthenticated={false} component={AuthPage} />
+      <PublicRoute exact path="/register" isAuthenticated={false} component={AuthPage} />
+
+      <PrivateRoute exact path="/messages" isAuthenticated={true} component={MessagesPage} />
+      <PrivateRoute exact path="/account/detail" isAuthenticated={true} component={Account} />
+      <PrivateRoute exact path="/:id" isAuthenticated={true} component={Profile} />
+      <PrivateRoute exact path="/" isAuthenticated={true} component={Index} />
+      
+      <Redirect to="/login" />
+
+    </Switch>
   )
 }

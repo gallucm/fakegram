@@ -24,7 +24,8 @@ export const MainNavigation = () => {
 
     const handleLogoutClick = () => {
         hideOptionsMenuHandler();
-        history.replace('/login');
+        // history.replace('/login');
+        localStorage.removeItem('fToken');
     }
 
     const showOptionsMenuHandler = () => {
