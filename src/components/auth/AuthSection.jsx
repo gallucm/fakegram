@@ -1,9 +1,13 @@
 import { useRef } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { signIn, signUp, writeUserData } from '../../services/firebase/api';
+import { authActions } from '../../store/auth';
 import classes from './AuthSection.module.css';
 
 export const AuthSection = () => {
+
+    const dispatch = useDispatch();
 
     const nameInputRef = useRef('');
     const usernameInputRef = useRef('');
@@ -21,22 +25,11 @@ export const AuthSection = () => {
         const password = passwordInputRef.current.value;
 
         if (isLogin){
-            const response = await signIn(email, password);
-            if (response.id)
-                localStorage.setItem('user', JSON.stringify(response));
+            
         } else {
             const name = nameInputRef.current.value;
             const username = usernameInputRef.current.value;
 
-            const uid = await signUp(email, password);
-            const isAllOk = await writeUserData({
-                 uid,
-                 email,
-                 name,
-                 username
-            });
-
-            console.log(isAllOk);
         }
         
     }
@@ -45,7 +38,7 @@ export const AuthSection = () => {
         <section className={classes.auth_section}>
             <h1>Fakegram</h1>
             <form className={classes.auth_section__form} onSubmit={submitHandler}>
-                <input type="email" id="email" placeholder="Correo electrónico" ref={emailInputRef} className={classes.auth_section__form__user_input} autoComplete="off" required />
+                <input type="email" id="email" placeholder="Correo electrónico" ref={emailInputRef} className={classes.auth_section__form__user_input} required />
                 {
                     !isLogin && (
                         <>

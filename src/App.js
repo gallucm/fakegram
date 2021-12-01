@@ -9,27 +9,19 @@ import { MessagesPage } from './pages/MessagesPage';
 import { Profile } from './pages/ProfilePage';
 import { PrivateRoute } from './router/PrivateRoute';
 import { PublicRoute } from './router/PublicRoute';
-import { authActions } from './store/auth';
 
 export const App = () => {
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(authActions.checkIfLoggedIn())
-  }, [dispatch]);
-  
+   
   const { isLoggedIn } = useSelector(state => state.auth);
   
   return (
     <Switch>
-
       <PublicRoute exact path="/login" isAuthenticated={isLoggedIn} component={AuthPage} />
       <PublicRoute exact path="/register" isAuthenticated={isLoggedIn} component={AuthPage} />
 
       <PrivateRoute exact path="/messages" isAuthenticated={isLoggedIn} component={MessagesPage} />
       <PrivateRoute exact path="/account/detail" isAuthenticated={isLoggedIn} component={Account} />
-      <PrivateRoute exact path="/:id" isAuthenticated={isLoggedIn} component={Profile} />
+      <PrivateRoute exact path="/profile/:id" isAuthenticated={isLoggedIn} component={Profile} />
       <PrivateRoute exact path="/" isAuthenticated={isLoggedIn} component={Index} />
       
       <Redirect to="/login" />
