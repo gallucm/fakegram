@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 import { searchProfile } from '../actions/profile';
 
 import { profileActions } from '../store/profile-slice';
@@ -8,18 +8,22 @@ import { profileActions } from '../store/profile-slice';
 export const useProfile = () => {
     const [searchingProfile, setSearchingProfile] = useState(true);
 
+    const location = useLocation();
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const handleSearchProfile = async (profile) => {
-        const profileResult = await searchProfile(profile);
+    const userProfile = location.pathname;
+
+    const handleSearchProfile = async () => {
+
+        const profileResult = await searchProfile(userProfile);
 
         if (profileResult) {
+            setSearchingProfile(false);
             dispatch(profileActions.loadUser(profileResult));
-            setSearchingProfile(false);
         } else {
-            history.push('/');
             setSearchingProfile(false);
+            history.push('/');
         }
     }
 

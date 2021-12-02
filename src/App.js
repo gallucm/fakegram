@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Switch, Redirect } from 'react-router-dom';
 
@@ -16,12 +16,16 @@ import { Profile } from './pages/ProfilePage';
 export const App = () => {
 
   const [loadUse, checkIfLogged] = useLogin();
+  const [load, setLoad] = useState(false);
 
   const { isLoggedIn } = useSelector(state => state.auth);
 
   useEffect(() => {
-    checkIfLogged();
-  }, [checkIfLogged]);
+    if (!load) {
+      setLoad(true);
+      checkIfLogged();
+    }
+  }, [checkIfLogged, load]);
 
   if (loadUse) {
     return <div className="loader"></div>

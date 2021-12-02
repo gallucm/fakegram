@@ -1,21 +1,21 @@
 import classes from './ProfileSection.module.css';
 import avatar from '../../assets/images/avatar.png';
-import { useEffect } from 'react';
-import { useLocation } from 'react-router';
 import { useProfile } from '../../hooks/useProfile';
 import { PostsSection } from './PostsSection';
+import { useEffect, useState } from 'react';
 
 export const ProfileSection = () => {
-
-    const location = useLocation();
-
-    const profile = location.pathname;
+    const [ load, setLoad ] = useState(false);
 
     const [ searchingProfile, handleSearchProfile ] = useProfile();
 
+    
     useEffect(() => {
-        handleSearchProfile(profile);
-    }, [handleSearchProfile, profile]);
+        if (!load){
+            setLoad(true);
+            handleSearchProfile();
+        }
+    }, [handleSearchProfile, load]);
 
     if (searchingProfile) {
         return <div className="loader"></div>
@@ -58,7 +58,7 @@ export const ProfileSection = () => {
                     </section>
                 </div>
             </div>
-            
+
             <PostsSection/>
         </>
     )

@@ -10,6 +10,7 @@ import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
 import { useDispatch } from 'react-redux';
 import { authActions } from '../../store/auth-slice';
+import { profileActions } from '../../store/profile-slice';
 
 export const MainNavigation = () => {
     const history = useHistory();
@@ -27,6 +28,7 @@ export const MainNavigation = () => {
 
     const handleLogoutClick = () => {
         dispatch(authActions.logout());
+        dispatch(profileActions.removeUser());
     }
 
     const showOptionsMenuHandler = () => {

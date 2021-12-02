@@ -13,6 +13,10 @@ const profileSlice = createSlice({
             state.user = action.payload;
         },
 
+        removeUser: (state) => {
+            state.user = null;
+        },
+
         loadPosts: (state, action) => {
             state.posts = action.payload;
         }
