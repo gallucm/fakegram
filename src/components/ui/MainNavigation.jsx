@@ -9,7 +9,7 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
 import { useDispatch } from 'react-redux';
-import { authActions } from '../../store/auth';
+import { authActions } from '../../store/auth-slice';
 
 export const MainNavigation = () => {
     const history = useHistory();

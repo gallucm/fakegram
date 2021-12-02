@@ -1,13 +1,14 @@
 import { useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
-import { signIn, signUp, writeUserData } from '../../services/firebase/api';
-import { authActions } from '../../store/auth';
+import { registerUser } from '../../actions/auth';
 import classes from './AuthSection.module.css';
 
 export const AuthSection = () => {
 
     const dispatch = useDispatch();
+
+    const { message, error, loading } = useSelector(state => state.ui);
 
     const nameInputRef = useRef('');
     const usernameInputRef = useRef('');
@@ -21,17 +22,17 @@ export const AuthSection = () => {
     const submitHandler = async (event) => {
         event.preventDefault();
 
+        const name = nameInputRef.current.value;
+        const username = usernameInputRef.current.value;
         const email = emailInputRef.current.value;
         const password = passwordInputRef.current.value;
 
-        if (isLogin){
-            
-        } else {
-            const name = nameInputRef.current.value;
-            const username = usernameInputRef.current.value;
+        if (isLogin) {
 
+        } else {
+            dispatch(registerUser({ email, password, name, username }));
         }
-        
+
     }
 
     return (
@@ -60,6 +61,15 @@ export const AuthSection = () => {
                     )
                 }
             </div>
+            {
+                loading && <div>Loading...</div>
+            }
+            {
+                !loading && message && <div>{message}</div>
+            }
+            {
+                !loading && error && <div>{error}</div>
+            }
         </section>
     )
 }
