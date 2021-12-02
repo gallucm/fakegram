@@ -42,10 +42,17 @@ const writeUserData = async (uid, email, username, fullname) => {
 
     try {
         await set(ref(db, `users/${uid}`), {
-            uid,
+            email,
+            imageProfile: "",
+            info: {
+                description: "",
+                follows: 0,
+                followers: 0
+            },
             name: fullname,
+            uid,
             username,
-            email
+
         });
 
         success = true;

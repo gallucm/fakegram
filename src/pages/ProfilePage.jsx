@@ -7,7 +7,6 @@ export const Profile = () => {
     return (
         <Navbar>
             <ProfileSection/>
-            <PostsSection/>
         </Navbar>
     )
 }

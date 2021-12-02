@@ -34,7 +34,7 @@ export const App = () => {
     
        <PrivateRoute exact path="/messages" isAuthenticated={isLoggedIn && !loadUse} component={MessagesPage} />
        <PrivateRoute exact path="/account/detail" isAuthenticated={isLoggedIn && !loadUse} component={Account} />
-       <PrivateRoute exact path="/profile/:id" isAuthenticated={isLoggedIn && !loadUse} component={Profile} />
+       <PrivateRoute exact path="/:id" isAuthenticated={isLoggedIn && !loadUse} component={Profile} />
        <PrivateRoute exact path="/" isAuthenticated={isLoggedIn && !loadUse} component={Index} />
 
        <Redirect to="/login" />

@@ -1,4 +1,4 @@
-import { signIn, signUp } from "../services/firebase/api"
+import { signIn, signUp } from "../services/firebase/auth";
 import { authActions } from "../store/auth-slice";
 import { uiActions } from "../store/ui-slice";
 
