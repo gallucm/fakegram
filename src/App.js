@@ -1,5 +1,4 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Switch, Redirect } from 'react-router-dom';
 
 import { Account } from './pages/AccountPage';

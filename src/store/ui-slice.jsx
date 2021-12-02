@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     loading: false,
     message: null,
+    reset: false,
     error: null
 }
 
@@ -10,52 +11,43 @@ const uiSlice = createSlice({
     name: 'ui',
     initialState: initialState,
     reducers: {
-        startLoading: (state) => {
+        setLoading: (state, action) => {
             const oldState = { ...state };
-
-            state.loading = true;
             state.message = oldState.message;
             state.error = oldState.error;
-        },
 
-        stopLoading: (state) => {
-            const oldState = { ...state };
-
-            state.loading = false;
-            state.message = oldState.message;
-            state.error = oldState.error;
+            state.loading = action.payload;
         },
 
         setMessage: (state, action) => {
             const oldState = { ...state };
-
-            state.message = action.payload;
             state.loading = oldState.loading;
             state.error = oldState.error;
+
+            state.message = action.payload;
         },
 
         setError: (state, action) => {
             const oldState = { ...state };
+            state.loading = oldState.loading;
+            state.message = oldState.message;
 
             state.error = action.payload;
-            state.loading = oldState.loading;
-            state.message = oldState.message;
         },
 
-        clearMessage: (state) => {
+        reset: (state) => {
             const oldState = { ...state };
 
-            state.message = null;
             state.loading = oldState.loading;
+            state.message = oldState.message;
             state.error = oldState.error;
+            state.reset = !state.reset;
         },
 
-        clearError: (state) => {
-            const oldState = { ...state };
-
+        resetAll: (state) => {
+            state.reset = false;
+            state.message = null;
             state.error = null;
-            state.loading = oldState.loading;
-            state.message = oldState.message;
         }
     }
 });

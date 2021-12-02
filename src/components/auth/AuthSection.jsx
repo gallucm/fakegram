@@ -1,14 +1,14 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
-import { registerUser } from '../../actions/auth';
+import { loginUser, registerUser } from '../../actions/auth';
 import classes from './AuthSection.module.css';
 
 export const AuthSection = () => {
 
     const dispatch = useDispatch();
 
-    const { message, error, loading } = useSelector(state => state.ui);
+    const { message, error, loading, reset } = useSelector(state => state.ui);
 
     const nameInputRef = useRef('');
     const usernameInputRef = useRef('');
@@ -19,6 +19,19 @@ export const AuthSection = () => {
 
     const isLogin = location.pathname === '/login';
 
+    useEffect(() => {
+        if (reset){
+            clearInputs();
+        }
+    }, [reset]);
+
+    const clearInputs = () => {
+        nameInputRef.current.value = '';
+        usernameInputRef.current.value = '';
+        emailInputRef.current.value = '';
+        passwordInputRef.current.value = '';
+    }
+
     const submitHandler = async (event) => {
         event.preventDefault();
 
@@ -28,7 +41,7 @@ export const AuthSection = () => {
         const password = passwordInputRef.current.value;
 
         if (isLogin) {
-
+            dispatch(loginUser({ email, password }));
         } else {
             dispatch(registerUser({ email, password, name, username }));
         }
@@ -62,7 +75,7 @@ export const AuthSection = () => {
                 }
             </div>
             {
-                loading && <div>Loading...</div>
+                loading && <h3>Loading...</h3>
             }
             {
                 !loading && message && <div>{message}</div>
