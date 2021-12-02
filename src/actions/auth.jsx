@@ -1,4 +1,5 @@
 import { signIn, signUp } from "../services/firebase/api"
+import { authActions } from "../store/auth-slice";
 import { uiActions } from "../store/ui-slice";
 
 export const registerUser = (user) => {
@@ -8,8 +9,10 @@ export const registerUser = (user) => {
 
             const success = await signUp(user.email, user.password, user.username, user.name);
 
-            if (success)
+            if (success){
                 dispatch(uiActions.setMessage('Usuario creado correctamente'));
+                dispatch(uiActions.reset());
+            }
         } catch (error) {
             console.log(error.message);
             dispatch(uiActions.setMessage('Error: ' + error.message));
@@ -24,10 +27,12 @@ export const loginUser = (user) => {
         try {
             dispatch(uiActions.setLoading(true));
 
-            const success = await signIn(user.email, user.password);
+            const response = await signIn(user.email, user.password);
 
-            if (success)
+            if (response){
+                dispatch(authActions.login(response));
                 dispatch(uiActions.setMessage('Usuario logueado correctamente'));
+            }
         } catch (error) {
             console.log(error.message);
             dispatch(uiActions.setMessage('Error: ' + error.message));

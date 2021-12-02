@@ -56,7 +56,7 @@ export const MainNavigation = () => {
                 </div>
                 <div className={classes.drowpdown__content}>
                     <div className={classes.link}>
-                        <Link to="/gallucm" onClick={hideOptionsMenuHandler}>Perfil</Link>
+                        <Link to="/profile/gallucm" onClick={hideOptionsMenuHandler}>Perfil</Link>
                     </div>
                     <div className={classes.link}>
                         <Link to="/account" onClick={hideOptionsMenuHandler}>Configuración</Link>

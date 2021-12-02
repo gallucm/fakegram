@@ -25,11 +25,16 @@ export const signUp = async (email, password, username, fullname) => {
 }
 
 export const signIn = async (email, password) => {
-    const response = await firebaseAuth.signInWithEmailAndPassword(auth, email, password);
-
-    console.log(response);
-    
-    return response;
+    try{
+        const response = await firebaseAuth.signInWithEmailAndPassword(auth, email, password);
+        
+        return {
+            uid: response.user.uid,
+            token: response.user.accessToken,
+        }
+    } catch (error) {
+        throw new Error(error);
+    }
 }
 
 const writeUserData = async (uid, email, username, fullname) => {

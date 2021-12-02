@@ -20,10 +20,12 @@ export const AuthSection = () => {
     const isLogin = location.pathname === '/login';
 
     useEffect(() => {
-        if (reset){
+        if (reset && !isLogin) {
+            if (nameInputRef.current.value !== '' && usernameInputRef.current.value !== '' && emailInputRef.current.value !== '' && passwordInputRef.current.value !== ''){
             clearInputs();
+            }
         }
-    }, [reset]);
+    }, [reset, isLogin]);
 
     const clearInputs = () => {
         nameInputRef.current.value = '';
@@ -41,7 +43,7 @@ export const AuthSection = () => {
         const password = passwordInputRef.current.value;
 
         if (isLogin) {
-            dispatch(loginUser({ email, password }));
+            dispatch(loginUser({ email, password }));            
         } else {
             dispatch(registerUser({ email, password, name, username }));
         }
