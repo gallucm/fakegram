@@ -1,4 +1,4 @@
-import { getProfile } from "../services/firebase/profile"
+import { getProfile, uploadImageProfile } from "../services/firebase/profile"
 
 export const searchProfile = async (search) => {
     const value = search.replace('/', '');
@@ -9,4 +9,9 @@ export const searchProfile = async (search) => {
     }
 
     return null;
+}
+
+export const updateImage = async (username, image) => {
+    const isUpdated = await uploadImageProfile(username, image);
+    console.log('result', isUpdated);
 }

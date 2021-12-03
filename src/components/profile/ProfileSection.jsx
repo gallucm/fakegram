@@ -1,9 +1,10 @@
 import classes from './ProfileSection.module.css';
-import noProfile from '../../assets/images/thumb-profile.png';
+// import noProfile from '../../assets/images/thumb-profile.png';
 import { useProfile } from '../../hooks/useProfile';
 import { PostsSection } from './PostsSection';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { updateImage } from '../../actions/profile';
 
 export const ProfileSection = () => {
     const [load, setLoad] = useState(false);
@@ -23,9 +24,10 @@ export const ProfileSection = () => {
         return <div className="loader"></div>
     }
 
-    const handlerImageProfileChange = (e) => {
+    const handlerImageProfileChange = async(e) => {
         const imageFile = e.target.files[0];
-        console.log(imageFile);
+        
+        await updateImage(user.uid, imageFile);
     }
 
     return (
@@ -33,7 +35,7 @@ export const ProfileSection = () => {
             <div className={classes.profile_section_container}>
                 <div className={classes.profile_section_container__profile_img}>
                     <label htmlFor="file-input">
-                        <img src={noProfile} alt="Profile Pic" />
+                        <img src={user.imageProfile} alt="Profile Pic" />
                     </label>
                     <input type="file" id="file-input" onChange={handlerImageProfileChange} accept="image/png, image/gif, image/jpeg"/>
                 </div>
