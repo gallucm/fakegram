@@ -15,11 +15,17 @@
     width: 200px;
 }
 
+.profile_section_container__profile_img input {
+    display: none;
+}
+
 .profile_section_container__profile_img img{
     width: 150px;
     height: 150px;
     margin-left: 1rem;
     border-radius: 50%;
+
+    cursor: pointer;
 }
 
 .profile_section_container__data {

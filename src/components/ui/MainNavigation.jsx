@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 
 import classes from './MainNavigation.module.css';
-import avatar from '../../assets/images/avatar.png';
+import noProfile from '../../assets/images/thumb-profile.png';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 
@@ -54,7 +54,7 @@ export const MainNavigation = () => {
                         <MapsUgcOutlinedIcon className={classes.icon} titleAccess="Mensajes"/>
                     </Link>
                     <FavoriteBorderIcon className={classes.icon} titleAccess="Notificaciones"/>
-                    <img src={avatar} alt="Avatar" className={classes.avatar} onClick={showOptionsMenuHandler} title="Menu"/>
+                    <img src={noProfile} alt="Avatar" className={classes.avatar} onClick={showOptionsMenuHandler} title="Menu"/>
                 </div>
                 <div className={classes.drowpdown__content}>
                     <div className={classes.link}>
