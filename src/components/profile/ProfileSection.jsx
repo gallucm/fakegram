@@ -8,6 +8,7 @@ import { updateImage } from '../../actions/profile';
 
 export const ProfileSection = () => {
     const [load, setLoad] = useState(false);
+    const [imageLoad, setImageLoad] = useState(false);
 
     const [searchProfile] = useProfile();
 
@@ -24,10 +25,14 @@ export const ProfileSection = () => {
         return <div className="loader"></div>
     }
 
-    const handlerImageProfileChange = async(e) => {
+    const handlerImageProfileChange = async (e) => {
         const imageFile = e.target.files[0];
-        
+
         await updateImage(user.uid, imageFile);
+    }
+
+    const handleImageLoad = () => {
+        setImageLoad(true);
     }
 
     return (
@@ -35,9 +40,12 @@ export const ProfileSection = () => {
             <div className={classes.profile_section_container}>
                 <div className={classes.profile_section_container__profile_img}>
                     <label htmlFor="file-input">
-                        <img src={user.imageProfile} alt="Profile Pic" />
+                        <img src={user.imageProfile} alt="Profile Pic" onLoad={handleImageLoad} style={imageLoad ? { display: 'inherit' } : { display: 'none' }} />
+                        {
+                            !imageLoad && <div className="loader"></div>
+                        }
                     </label>
-                    <input type="file" id="file-input" onChange={handlerImageProfileChange} accept="image/png, image/gif, image/jpeg"/>
+                    <input type="file" id="file-input" onChange={handlerImageProfileChange} accept="image/png, image/gif, image/jpeg" />
                 </div>
                 <div className={classes.profile_section_container__data}>
                     <section className={classes.profile_section_container__data__section1}>
