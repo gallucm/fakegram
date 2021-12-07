@@ -6,6 +6,7 @@ export const Index = () => {
         <Navbar>
             <div>
                 {/* <h2>Main Page</h2> */}
+                {/* Cargar al usuario */}
             </div>
         </Navbar>
     )

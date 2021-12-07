@@ -13,6 +13,12 @@ body{
     margin: auto;
     margin-top: 15%;
 }
+
+.mini {
+    width: 18px;
+    height: 18px;
+    margin-top: 0;
+}
   
 /* Safari */
 @-webkit-keyframes spin {

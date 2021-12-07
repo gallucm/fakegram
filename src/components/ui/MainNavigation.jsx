@@ -1,20 +1,23 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 
 import classes from './MainNavigation.module.css';
-import noProfile from '../../assets/images/thumb-profile.png';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { authActions } from '../../store/auth-slice';
 import { profileActions } from '../../store/profile-slice';
 
 export const MainNavigation = () => {
     const history = useHistory();
     const dispatch = useDispatch();
+    
+    const [imageLoad, setImageLoad] = useState(false);
+
+    const { user } = useSelector(state => state.profile);
 
     const inputSearchRef = useRef();
 
@@ -41,6 +44,11 @@ export const MainNavigation = () => {
         optionsMenu.classList.remove(classes.show);
     }
 
+    const handleImageLoad = () => {
+        setImageLoad(true);
+        console.log('se cargó');
+    }
+
     return (
         <header className={classes.header}>
             <h1 className={classes.logo} onClick={handleHomeClick}>Fakegram</h1>
@@ -54,7 +62,14 @@ export const MainNavigation = () => {
                         <MapsUgcOutlinedIcon className={classes.icon} titleAccess="Mensajes"/>
                     </Link>
                     <FavoriteBorderIcon className={classes.icon} titleAccess="Notificaciones"/>
-                    <img src={noProfile} alt="Avatar" className={classes.avatar} onClick={showOptionsMenuHandler} title="Menu"/>
+                    {
+                        user &&
+                        <img src={user.imageProfile} alt="Avatar" className={classes.avatar} onClick={showOptionsMenuHandler} onLoad={handleImageLoad} style={imageLoad ? { display: 'inherit' } : { display: 'none' }} title="Menu"/>
+                    }
+                    {
+                        !imageLoad &&
+                        <div className="loader mini"></div>
+                    }
                 </div>
                 <div className={classes.drowpdown__content}>
                     <div className={classes.link}>
