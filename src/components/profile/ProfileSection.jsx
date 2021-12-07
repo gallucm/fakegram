@@ -3,10 +3,13 @@ import classes from './ProfileSection.module.css';
 import { useProfile } from '../../hooks/useProfile';
 import { PostsSection } from './PostsSection';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateImage } from '../../actions/profile';
+import { profileActions } from '../../store/profile-slice';
 
 export const ProfileSection = () => {
+    const dispatch = useDispatch();
+
     const [load, setLoad] = useState(false);
     const [imageLoad, setImageLoad] = useState(false);
 
@@ -26,13 +29,18 @@ export const ProfileSection = () => {
     }
 
     const handlerImageProfileChange = async (e) => {
-        const imageFile = e.target.files[0];
+        setImageLoad(false);
 
-        await updateImage(user.uid, imageFile);
+        const imageFile = e.target.files[0];
+        const newUrlImage = await updateImage(user.uid, imageFile);
+        dispatch(profileActions.loadUser({
+            ...user,
+            imageProfile: newUrlImage
+        }));
     }
 
     const handleImageLoad = () => {
-        setImageLoad(true);
+        setImageLoad(!imageLoad);
     }
 
     return (

@@ -12,6 +12,11 @@ export const searchProfile = async (search) => {
 }
 
 export const updateImage = async (username, image) => {
-    const isUpdated = await uploadImageProfile(username, image);
-    console.log('result', isUpdated);
+    const urlUpdated = await uploadImageProfile(username, image);
+
+    if (urlUpdated) {
+        return urlUpdated;
+    }
+
+    return null;
 }

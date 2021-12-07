@@ -21,36 +21,33 @@ export const getProfile = async (username) => {
 
 
 export const uploadImageProfile = async (userId, image) => {
-
     const storageRef = nApp.storage().ref();
-    const filePath = storageRef.child('images/profile/' + image.name);
+    const filePathRef = storageRef.child('images/profile/' + image.name);
 
-    filePath.put(image).on('state_changed', function (snapshot) {
-        var progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log('Upload is ' + progress + '% done');
-        switch (snapshot.state) {
-            case firebase.storage.TaskState.PAUSED: // or 'paused'
-                console.log('Upload is paused');
-                break;
-            case firebase.storage.TaskState.RUNNING: // or 'running'
-                console.log('Upload is running');
-                break;
-            case firebase.storage.TaskState.SUCCESS: // or 'running'
-                console.log('Upload is running');
-                break;
-            default:
-                
-        }
-    }, function (error) {
-    }, async function () {
-        const fileUrlDownlad = await filePath.getDownloadURL();
-        updateImageProfile(userId, fileUrlDownlad);
-    });
+    const snapshot = await filePathRef.put(image);
+
+    const downloadURL = await snapshot.ref.getDownloadURL();
+
+    const imageUpdated = await updateImageProfile(userId, downloadURL);
+   
+    if (imageUpdated) {
+        return downloadURL;
+    } else {
+        return null;
+    }
 }
 
 const updateImageProfile = async (userId, url) => {
     var updates = {};
+    let isOk = false;
 
-    updates['/users/' + userId + '/imageProfile'] = url;
-    await firebase.database().ref().update(updates);
+    try{
+        updates['/users/' + userId + '/imageProfile'] = url;
+        await firebase.database().ref().update(updates);
+        isOk = true;
+    } catch(error) {
+        throw new Error(error.message);
+    } finally{
+        return isOk;
+    }
 }
