@@ -34,8 +34,7 @@ export const loginUser = (user) => {
                 dispatch(uiActions.setMessage('Usuario logueado correctamente'));
             }
         } catch (error) {
-            console.log(error.message);
-            dispatch(uiActions.setMessage('Error: ' + error.message));
+            dispatch(uiActions.setMessage(error.message));
         } finally {
             dispatch(uiActions.setLoading(false));
         }

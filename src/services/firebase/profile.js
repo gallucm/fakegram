@@ -20,7 +20,6 @@ export const getProfile = async (username) => {
 }
 
 export const getProfileById = async (userId) => {
-    console.log('x', userId);
     const userRef = firebase.database().ref('/users/' + userId);
 
     const user = await (await userRef.get()).val();

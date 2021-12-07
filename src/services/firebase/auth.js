@@ -27,13 +27,13 @@ export const signUp = async (email, password, username, fullname) => {
 export const signIn = async (email, password) => {
     try{
         const response = await firebaseAuth.signInWithEmailAndPassword(auth, email, password);
-        
+
         return {
             uid: response.user.uid,
             token: response.user.accessToken,
         }
     } catch (error) {
-        throw new Error(error);
+        throw new Error(error.message);
     }
 }
 
