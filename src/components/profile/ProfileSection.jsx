@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateImage } from '../../actions/profile';
 import { profileActions } from '../../store/profile-slice';
 
-export const ProfileSection = () => {
+export const  ProfileSection = () => {
     const dispatch = useDispatch();
 
     const [load, setLoad] = useState(false);

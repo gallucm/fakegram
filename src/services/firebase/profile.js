@@ -19,6 +19,14 @@ export const getProfile = async (username) => {
     return value;
 }
 
+export const getProfileById = async (userId) => {
+    console.log('x', userId);
+    const userRef = firebase.database().ref('/users/' + userId);
+
+    const user = await (await userRef.get()).val();
+
+    return user;
+}
 
 export const uploadImageProfile = async (userId, image) => {
     const storageRef = nApp.storage().ref();

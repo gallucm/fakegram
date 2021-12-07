@@ -1,13 +1,13 @@
 import React, { useRef, useState } from 'react'
-
-import classes from './MainNavigation.module.css';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
 import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
-import { useDispatch, useSelector } from 'react-redux';
+
+import classes from './MainNavigation.module.css';
 import { authActions } from '../../store/auth-slice';
 import { profileActions } from '../../store/profile-slice';
 
@@ -46,7 +46,6 @@ export const MainNavigation = () => {
 
     const handleImageLoad = () => {
         setImageLoad(true);
-        console.log('se cargó');
     }
 
     return (

@@ -1,9 +1,10 @@
 import React from 'react'
+import { Navbar } from '../components/ui/Navbar'
 
 export const MessagesPage = () => {
     return (
-        <div>
+        <Navbar>
             <h1>Messages Page</h1>
-        </div>
+        </Navbar>
     )
 }

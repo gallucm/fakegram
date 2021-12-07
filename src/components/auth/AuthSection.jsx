@@ -77,7 +77,7 @@ export const AuthSection = () => {
                 }
             </div>
             {
-                loading && <h3>Loading...</h3>
+                loading && <div className="loader mini" style={{marginBottom: '1rem'}}></div>
             }
             {
                 !loading && message && <div>{message}</div>
