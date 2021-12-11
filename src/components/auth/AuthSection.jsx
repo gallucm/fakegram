@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useLocation } from 'react-router-dom';
 import { loginUser, registerUser } from '../../actions/auth';
+import { Alert } from '../ui/Alert';
 import classes from './AuthSection.module.css';
 
 export const AuthSection = () => {
@@ -80,10 +81,10 @@ export const AuthSection = () => {
                 loading && <div className="loader mini" style={{marginBottom: '1rem'}}></div>
             }
             {
-                !loading && message && <div>{message}</div>
-            }
+                !loading && !error && message && <Alert message={message} />
+            } 
             {
-                !loading && error && <div>{error}</div>
+                !loading && error && <Alert isError={true} message={error} />
             }
         </section>
     )

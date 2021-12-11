@@ -1,0 +1,19 @@
+.alert {
+    border-radius: 5px;
+    color: white;
+    font-weight: 400;
+    height: auto;
+    width: 75%;
+    margin: auto;
+    margin-bottom: 1rem;
+}
+
+.success {
+    border: 1px solid rgb(43, 94, 46);
+    background: rgb(151, 206, 119);
+}
+
+.error {
+    border: 1px solid rgb(247, 75, 75) !important;
+    background: lightcoral !important;
+}

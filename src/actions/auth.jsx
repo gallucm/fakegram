@@ -9,13 +9,12 @@ export const registerUser = (user) => {
 
             const success = await signUp(user.email, user.password, user.username, user.name);
 
-            if (success){
+            if (success) {
                 dispatch(uiActions.setMessage('Usuario creado correctamente'));
                 dispatch(uiActions.reset());
             }
         } catch (error) {
-            console.log(error.message);
-            dispatch(uiActions.setMessage('Error: ' + error.message));
+            dispatch(uiActions.setError('Error: ' + error.message));
         } finally {
             dispatch(uiActions.setLoading(false));
         }
@@ -29,14 +28,23 @@ export const loginUser = (user) => {
 
             const response = await signIn(user.email, user.password);
 
-            if (response){
+            if (response) {
                 dispatch(authActions.login(response));
                 dispatch(uiActions.setMessage('Usuario logueado correctamente'));
             }
         } catch (error) {
-            dispatch(uiActions.setMessage(error.message));
+            dispatch(setMessageError(error.message));
         } finally {
             dispatch(uiActions.setLoading(false));
         }
+    }
+}
+
+const setMessageError = (error) => {
+    return async (dispatch) => {
+        if (error.includes('user-not'))
+            dispatch(uiActions.setError('Usuario o contraseña incorrectos'));
+        else
+            dispatch(uiActions.setError(error.message));
     }
 }
