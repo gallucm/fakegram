@@ -18,7 +18,7 @@ export const signUp = async (email, password, username, fullname) => {
         if (writeSuccess)
             success = true;
     } catch (error) {
-        throw new Error(error);
+        throw new Error(error.message);
     }
 
     return success;
@@ -57,29 +57,8 @@ const writeUserData = async (uid, email, username, fullname) => {
 
         success = true;
     } catch (error) {
-        throw new Error(error);
+        throw new Error(error.message);
     }
 
     return success;
 }
-
-
-
-// export const writeUserData = async (data) => {
-//     let userWrite = false;
-
-//     try{
-//         await set(ref(db, `users/${data.uid}`), {
-//             uid : data.uid,
-//             name : data.name,
-//             username : data.username,
-//             email : data.email
-//         });
-
-//         userWrite = true;
-//     } catch (error) {
-//         throw new Error(error.message);
-//     }
-
-//     return userWrite;
-// }

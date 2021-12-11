@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
-import { Navbar } from '../components/ui/Navbar'
+
 import { useProfile } from '../hooks/useProfile';
 import { getLoginData } from '../services/utils'
+
+import { Feed } from '../components/feed/Feed';
+import { Navbar } from '../components/ui/Navbar'
 
 export const Index = () => {
 
@@ -21,8 +24,7 @@ export const Index = () => {
     return (
         <Navbar>
             <div>
-                {/* <h2>Main Page</h2> */}
-                {/* Cargar al usuario */}
+                <Feed/>
             </div>
         </Navbar>
     )
