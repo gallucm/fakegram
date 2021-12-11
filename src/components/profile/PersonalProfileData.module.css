@@ -1,0 +1,40 @@
+.profile_data {
+    margin-left: 4rem;
+}
+
+.profile_data h2{
+    margin-top: 0.2rem;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+.profile_data button{
+    cursor: pointer;
+    border: 1px solid #cccc;
+    border-radius: 5px;
+    height: 2rem;
+    margin-left: 1rem;
+    background: transparent;
+}
+
+.section1,
+.section2 {
+    display: flex;
+    flex-direction: row;
+}
+
+.section2__item{
+    margin-right: 2rem;
+    margin-top: -1rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.section2__item p{
+    font-weight: 500;
+    font-family: Times, serif;
+}
+
+.section3__item p{
+    margin-top: -0.5rem;
+}
