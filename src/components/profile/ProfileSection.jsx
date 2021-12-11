@@ -3,15 +3,11 @@ import classes from './ProfileSection.module.css';
 import { useProfile } from '../../hooks/useProfile';
 import { PostsSection } from './PostsSection';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { updateImage } from '../../actions/profile';
-import { profileActions } from '../../store/profile-slice';
+import { useSelector } from 'react-redux';
+import { ImageProfile } from './ImageProfile';
 
 export const  ProfileSection = () => {
-    const dispatch = useDispatch();
-
     const [load, setLoad] = useState(false);
-    const [imageLoad, setImageLoad] = useState(false);
 
     const [searchProfile] = useProfile();
 
@@ -28,33 +24,11 @@ export const  ProfileSection = () => {
         return <div className="loader"></div>
     }
 
-    const handlerImageProfileChange = async (e) => {
-        setImageLoad(false);
-
-        const imageFile = e.target.files[0];
-        const newUrlImage = await updateImage(user.uid, imageFile);
-        dispatch(profileActions.loadUser({
-            ...user,
-            imageProfile: newUrlImage
-        }));
-    }
-
-    const handleImageLoad = () => {
-        setImageLoad(!imageLoad);
-    }
-
     return (
         <>
             <div className={classes.profile_section_container}>
-                <div className={classes.profile_section_container__profile_img}>
-                    <label htmlFor="file-input">
-                        <img src={user.imageProfile} alt="Profile Pic" onLoad={handleImageLoad} style={imageLoad ? { display: 'inherit' } : { display: 'none' }} />
-                        {
-                            !imageLoad && <div className="loader"></div>
-                        }
-                    </label>
-                    <input type="file" id="file-input" onChange={handlerImageProfileChange} accept="image/png, image/gif, image/jpeg" />
-                </div>
+                <ImageProfile user={user} />
+                
                 <div className={classes.profile_section_container__data}>
                     <section className={classes.profile_section_container__data__section1}>
                         <h2>{user.username}</h2>
