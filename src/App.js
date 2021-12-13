@@ -33,16 +33,16 @@ export const App = () => {
 
   return (
     <Switch>
-       <PublicRoute exact path="/login" isAuthenticated={isLoggedIn && !loadUse} component={AuthPage} />
-       <PublicRoute exact path="/register" isAuthenticated={isLoggedIn && !loadUse} component={AuthPage} />
-    
-       <PrivateRoute exact path="/messages" isAuthenticated={isLoggedIn && !loadUse} component={MessagesPage} />
-       <PrivateRoute exact path="/account/detail" isAuthenticated={isLoggedIn && !loadUse} component={Account} />
-       <PrivateRoute exact path="/:id" isAuthenticated={isLoggedIn && !loadUse} component={Profile} />
-       <PrivateRoute exact path="/" isAuthenticated={isLoggedIn && !loadUse} component={Index} />
+      <PublicRoute exact path="/login" isAuthenticated={isLoggedIn && !loadUse} component={AuthPage} />
+      <PublicRoute exact path="/register" isAuthenticated={isLoggedIn && !loadUse} component={AuthPage} />
 
-       <Redirect to="/login" />
+      <PrivateRoute exact path="/messages" isAuthenticated={isLoggedIn && !loadUse} component={MessagesPage} />
+      <PrivateRoute exact path="/account/detail" isAuthenticated={isLoggedIn && !loadUse} component={Account} />
+      <PrivateRoute exact path="/:id" isAuthenticated={isLoggedIn && !loadUse} component={Profile} />
+      <PrivateRoute exact path="/" isAuthenticated={isLoggedIn && !loadUse} component={Index} />
 
-     </Switch>
+      <Redirect to="/login" />
+
+    </Switch>
   )
 }

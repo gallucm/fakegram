@@ -1,0 +1,41 @@
+.form_section {
+    margin-top: -2rem;
+}
+
+.user_input,
+.password_input {
+    background-color: #fafafa;
+    border: 1px solid rgba(243, 243, 243, 1) !important;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    width: 70%;
+    height: 2.5rem;
+    padding-left: 1rem;
+}
+
+.password_input{
+    margin-top: 0;
+}
+
+.user_input:focus,
+.password_input:focus{
+    outline: none;
+    border: 1px solid #ccc !important;
+}
+
+.btn_submit{
+    width: 75.5%;
+    height: 2.5rem;
+    background: #0095f6;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    cursor: pointer;
+}
+
+.btn_submit:disabled{
+    background: #5db9f7;
+    cursor: not-allowed;
+}
