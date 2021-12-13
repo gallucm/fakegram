@@ -1,5 +1,3 @@
-import React from 'react'
-
 import classes from './PostsSection.module.css'
 
 export const PostsSection = () => {
