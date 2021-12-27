@@ -10,6 +10,7 @@ import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
 import classes from './MainNavigation.module.css';
 import { authActions } from '../../store/auth-slice';
 import { profileActions } from '../../store/profile-slice';
+import { Loading } from './Loading';
 
 export const MainNavigation = () => {
     const history = useHistory();
@@ -67,7 +68,7 @@ export const MainNavigation = () => {
                     }
                     {
                         !imageLoad &&
-                        <div className="loader mini"></div>
+                        <Loading size="small" />
                     }
                 </div>
                 <div className={classes.drowpdown__content}>

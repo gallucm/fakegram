@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { updateImage } from '../../actions/profile';
 import { profileActions } from '../../store/profile-slice';
+import { Loading } from '../ui/Loading';
 
 import classes from './ImageProfile.module.css';
 
@@ -30,9 +31,10 @@ export const ImageProfile = ({user}) => {
     return (
         <div className={classes.profile_img}>
             <label htmlFor="file-input">
-                <img src={user.imageProfile} alt="Profile Pic" onLoad={handleImageLoad} style={imageLoad ? { display: 'inherit' } : { display: 'none' }} />
+                <img src={user.imageProfile} alt="Profile Pic" onLoad={handleImageLoad} style={imageLoad ? { display: 'inherit' } : { display: 'none' }} /> 
                 {
-                    !imageLoad && <div className="loader"></div>
+                    !imageLoad && 
+                    <Loading/>
                 }
             </label>
             <input type="file" id="file-input" onChange={handlerImageProfileChange} accept="image/png, image/gif, image/jpeg" />
