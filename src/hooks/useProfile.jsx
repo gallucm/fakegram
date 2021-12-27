@@ -13,6 +13,7 @@ export const useProfile = (props) => {
     const userProfile = location.pathname;
 
     const handleSearchProfile = async (userId = null) => {
+
         if (userId) {
             const response = await searchProfileById(userId);
 

@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
-import { PostsSection } from '../components/profile/PostsSection'
-import { ProfileSection } from '../components/profile/ProfileSection'
-import { Navbar } from '../components/ui/Navbar'
-import { useProfile } from '../hooks/useProfile'
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+
+import { PostsSection } from '../components/profile/PostsSection';
+import { ProfileSection } from '../components/profile/ProfileSection';
+
+import { useProfile } from '../hooks/useProfile';
+
+import { Navbar } from '../components/ui/Navbar';
+import { Loading } from '../components/ui/Loading';
 
 export const Profile = () => {
     const [load, setLoad] = useState(false);
@@ -20,7 +24,7 @@ export const Profile = () => {
     }, [searchProfile, load]);
 
     if (!user) {
-        return <div className="loader"></div>
+        return <Loading size='large' />
     }
 
     return (
