@@ -1,0 +1,16 @@
+.container {
+    margin: auto;
+    margin-left: 2rem;
+}
+
+.container input {
+    display: none;
+}
+
+.container img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: 1rem;
+}

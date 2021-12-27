@@ -6,9 +6,9 @@ import { updateImage } from '../../actions/profile';
 import { profileActions } from '../../store/profile-slice';
 import { Loading } from '../ui/Loading';
 
-import classes from './ImageProfile.module.css';
+import classes from './ProfileImage.module.css';
 
-export const ImageProfile = ({user}) => {
+export const ProfileImage = ({user}) => {
     const dispatch = useDispatch();
     const [imageLoad, setImageLoad] = useState(false);
 
@@ -29,7 +29,7 @@ export const ImageProfile = ({user}) => {
     }
 
     return (
-        <div className={classes.profile_img}>
+        <div className={classes.container}>
             <label htmlFor="file-input">
                 <img src={user.imageProfile} alt="Profile Pic" onLoad={handleImageLoad} style={imageLoad ? { display: 'inherit' } : { display: 'none' }} /> 
                 {

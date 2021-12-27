@@ -1,0 +1,40 @@
+.container{
+    width: auto;
+    margin: auto;
+    margin-top: 0;
+    display: flex;
+}
+
+.data{
+    margin-left: 3rem;
+}
+
+.data h2{
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+.data p{
+    margin-top: 0.5rem;
+}
+
+.data button{
+    cursor: pointer;
+    border: 1px solid #cccc;
+    border-radius: 5px;
+    height: 2rem;
+    background: transparent;
+}
+
+.stats{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.stats p{
+    margin-right: 1rem;
+    margin-top: 1rem;
+    font-weight: 500;
+    font-family: Times, serif;
+}

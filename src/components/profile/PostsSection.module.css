@@ -1,7 +1,9 @@
-.posts_container{
+.container{
     width: 68%;
     margin: auto;
+    border-top: 1px solid #cccc;
     margin-top: 1rem;
+    padding-top: 1rem;
 }
 
 .posts{
