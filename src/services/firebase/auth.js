@@ -3,6 +3,7 @@ import { auth, db } from "./config";
 import * as firebaseAuth from "firebase/auth";
 
 import { set, ref } from "firebase/database";
+import { getProfileById } from "./profile";
 
 
 //firebaseAuth.onAuthStateChanged
@@ -28,9 +29,14 @@ export const signIn = async (email, password) => {
     try{
         const response = await firebaseAuth.signInWithEmailAndPassword(auth, email, password);
 
+        const profileData = await getProfileById(response.user.uid);
+
+        const { uid, ...userData } = profileData;
+
         return {
             uid: response.user.uid,
             token: response.user.accessToken,
+            userData
         }
     } catch (error) {
         throw new Error(error.message);

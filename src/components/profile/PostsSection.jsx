@@ -1,6 +1,6 @@
 import classes from './PostsSection.module.css'
 
-export const PostsSection = () => {
+export const PostsSection = ({posts}) => {
     return (
         <div className={classes.container}>
             <div className={classes.posts}>

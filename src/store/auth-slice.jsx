@@ -4,6 +4,7 @@ import { clearLoginData, saveLoginData } from "../services/utils";
 const initialState = {
     uid: null,
     token: null,
+    user: null,
     isLoggedIn: false
 }
 
@@ -17,6 +18,7 @@ const authSlice = createSlice({
             state.token = user.token;
             state.uid = user.uid;
             state.isLoggedIn = true;
+            state.user = user.userData;
 
             saveLoginData(user);
         },
@@ -24,6 +26,7 @@ const authSlice = createSlice({
         logout: (state) => {
             state.token = null;
             state.uid = null;
+            state.user = null;
             state.isLoggedIn = false;
 
             clearLoginData();
@@ -33,6 +36,7 @@ const authSlice = createSlice({
             if (action.payload) {
                 state.token = action.payload.token;
                 state.uid = action.payload.uid;
+                state.user = action.payload.userData;
                 state.isLoggedIn = true;
             }
         }

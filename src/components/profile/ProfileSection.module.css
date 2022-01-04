@@ -1,10 +1,7 @@
 .container{
-    display: flex;
-    flex-direction: row;
     height: auto;
     margin: auto;
-    margin-top: 1.5rem;
-    max-height: 500px;
-    overflow-y: auto;
+    max-height: 600px;
+    overflow-y: none;
     width: auto;
 }

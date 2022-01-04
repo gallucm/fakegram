@@ -3,10 +3,10 @@ import { ProfileImage } from './Profileimage';
 import classes from './ProfileData.module.css';
 
 export const ProfileData = ({ user, posts }) => {
+
     return (
         <div className={classes.container}>
             <ProfileImage user={user} />
-
             <div className={classes.data}>
                 <h2>{user.username}</h2>
                 <button>Editar perfil</button>

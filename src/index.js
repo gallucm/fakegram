@@ -7,15 +7,12 @@ import { App } from "./App";
 import store from "./store";
 
 import "./styles.css";
-// import { Footer } from "./components/ui/Footer";
 
 ReactDOM.render(
-  // <Footer>
     <BrowserRouter>
       <Provider store={store}>
         <App />
       </Provider>
     </BrowserRouter>,
-  // </Footer>,
   document.getElementById("root")
 );

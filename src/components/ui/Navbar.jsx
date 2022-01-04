@@ -1,14 +1,30 @@
-import React from 'react'
-import { MainNavigation } from './MainNavigation'
+import React from 'react';
+import { useSelector } from 'react-redux';
+
+import { Loading } from './Loading';
+import { MainNavigation } from './MainNavigation';
 
 export const Navbar = (props) => {
 
-    const { imageProfile } = props;
+    const { user } = useSelector(state => state.auth);
 
-     return (
+    const childrenWithProps = React.Children.map(props.children, child => {
+        if (React.isValidElement(child)) {
+            return React.cloneElement(child, { userProp: user});
+        }
+        return child;
+    });
+
+    if (!user) {
+        return <Loading size='large' />
+    }
+
+    return (
         <>
-           <MainNavigation imageProfile={imageProfile}/>
-           <main>{props.children}</main> 
+            <MainNavigation imageProfile={user.imageProfile} />
+            <main>
+                {childrenWithProps} 
+            </main>
         </>
     )
 }

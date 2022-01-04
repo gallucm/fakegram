@@ -19,7 +19,7 @@ export const MainNavigation = ({imageProfile}) => {
     }
 
     return (
-        <header className={classes.header}>
+        <header>
             <h1 className={classes.logo} onClick={handleHomeClick}>Fakegram</h1>
             <input type="text" className={classes.input_search} ref={inputSearchRef} placeholder="Busca" onKeyUp={handleSearchClick} />
             <div className={classes.buttons}>
