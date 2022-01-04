@@ -28,7 +28,7 @@ export const Profile = () => {
     }
 
     return (
-        <Navbar>
+        <Navbar imageProfile={user.imageProfile}>
             <ProfileSection posts={posts} user={user}/>
             <PostsSection posts={posts}/>
         </Navbar>

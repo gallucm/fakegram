@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useHistory, useLocation } from 'react-router';
 import { searchProfile, searchProfileById } from '../actions/profile';
+import { getLoginData } from '../services/utils';
 
 import { profileActions } from '../store/profile-slice';
 
@@ -23,14 +24,25 @@ export const useProfile = (props) => {
                 history.push('/');
             }
         } else {
-            const profileResult = await searchProfile(userProfile);
+            const user = getLoginData();
 
-            if (profileResult) {
-                dispatch(profileActions.loadUser(profileResult));
+            if (user){
+                const response = await searchProfileById(user.uid);
+
+                if (response){
+                    dispatch(profileActions.loadUser(response));
+                } else {
+                    history.push('/');
+                }
             } else {
-                history.push('/');
+                const profileResult = await searchProfile(userProfile);
+    
+                if (profileResult) {
+                    dispatch(profileActions.loadUser(profileResult));
+                } else {
+                    history.push('/');
+                }
             }
-
         }
     }
 

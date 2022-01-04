@@ -6,7 +6,6 @@
   src: url('../../assets/fonts/Billabong.woff');
 }
 
-
 header {
   align-items: center;
   border-bottom: 1px solid rgba(243, 243, 243, 0.8);
@@ -18,20 +17,6 @@ header {
   width: 68%;
 }
 
-.icons {
-  display: flex;
-  margin: auto;
-}
-
-.icon{
-  width: 35px !important;
-  height: 35px !important;
-  margin-bottom: 1.5rem;
-  margin-right: 1rem;
-
-  cursor: pointer;
-}
-
 .logo {
   font-family: 'Billabong';
   font-weight: 300;
@@ -39,50 +24,9 @@ header {
   color: black;
 }
 
-.dropdown{
-  position: relative;
-  display: inline-block;
-}
-
-.drowpdown__content{
-  display: none; 
-  position: absolute;
-  background-color: #f9f9f9;
-  min-width: 100px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  text-align: center;
-  margin-top: -1rem;
-  margin-left: 8rem;
-}
-
-.link{
-  padding: 5px;
-  cursor: pointer;
-  border-bottom: 1px solid #cccc;
-  height: 2rem;
-  line-height: 2rem;
-}
-
-.link a {
-  text-decoration: none;
-  color: black;
-  font-weight: 700;
-}
-
-:link {
-  color: blue;
-}
-
-.link_default {
-  color: black;
-}
-
-.link::selection .drowpdown__content{
-  display: none;
-}
-
-.show {
-  display: block;
+.buttons{
+  display: flex;
+  flex-direction: row;
 }
 
 .logo:hover{
@@ -107,12 +51,3 @@ header {
   border: 1px solid gray;
 }
 
-.avatar {
-  width: 33px;
-  height: 33px;
-  border-radius: 50%;
-}
-
-.avatar:hover {
-  cursor: pointer;
-}

@@ -17,9 +17,8 @@ export const useLogin = () => {
 
         if (userStorage) {
             firebaseAuth.onAuthStateChanged(auth, (user) => {
-                
-                const accessToken = user.accessToken;
-                const isExpired = user.stsTokenManager.isExpired;
+                const { accessToken } = user;
+                const { stsTokenManager: { isExpired } } = user;
 
                 const truthy = (accessToken === userStorage.token && !isExpired);
 

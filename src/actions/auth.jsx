@@ -7,7 +7,9 @@ export const registerUser = (user) => {
         try {
             dispatch(uiActions.setLoading(true));
 
-            const success = await signUp(user.email, user.password, user.username, user.name);
+            const { email, password, username, name } = user;
+
+            const success = await signUp(email, password, username, name);
 
             if (success) {
                 dispatch(uiActions.setMessage('Usuario creado correctamente'));
@@ -26,12 +28,12 @@ export const loginUser = (user) => {
         try {
             dispatch(uiActions.setLoading(true));
 
-            const response = await signIn(user.email, user.password);
+            const { email, password } = user;
 
-            if (response) {
-                dispatch(authActions.login(response));
-                dispatch(uiActions.setMessage('Usuario logueado correctamente'));
-            }
+            const response = await signIn(email, password);
+
+            if (response)
+                dispatch(authActions.login(response));            
         } catch (error) {
             dispatch(setMessageError(error.message));
         } finally {
@@ -42,9 +44,11 @@ export const loginUser = (user) => {
 
 const setMessageError = (error) => {
     return async (dispatch) => {
-        if (error.includes('user-not'))
-            dispatch(uiActions.setError('Usuario o contraseña incorrectos'));
+        if (error.includes('user-not') || error.includes('wrong')) 
+            dispatch(uiActions.setError('Usuario o contraseña incorrecta'));
+        else if (error.includes('disabled'))
+            dispatch(uiActions.setError('La cuenta ha sido temporalmente deshabilitada por haber realizado demasiados intentos incorrectos, contacte con el administrador'));
         else
-            dispatch(uiActions.setError(error.message));
+            dispatch(uiActions.setError(error));
     }
 }

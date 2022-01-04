@@ -2,9 +2,12 @@ import React from 'react'
 import { MainNavigation } from './MainNavigation'
 
 export const Navbar = (props) => {
-    return (
+
+    const { imageProfile } = props;
+
+     return (
         <>
-           <MainNavigation/>
+           <MainNavigation imageProfile={imageProfile}/>
            <main>{props.children}</main> 
         </>
     )

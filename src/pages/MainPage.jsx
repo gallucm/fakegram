@@ -1,28 +1,33 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 import { useProfile } from '../hooks/useProfile';
-import { getLoginData } from '../services/utils'
 
 import { Feed } from '../components/feed/Feed';
 import { Navbar } from '../components/ui/Navbar'
+import { Loading } from '../components/ui/Loading';
+import { useState } from 'react';
 
 export const Index = () => {
-
     const [load, setLoad] = useState(false);
 
-    const [searchProfile] = useProfile();
+    const [ handleSearchProfile ] = useProfile();
 
-    const userData = getLoginData();
+    const { user } = useSelector(state => state.profile);
 
     useEffect(() => {
-        if (!load && userData) {
+        if (!load){
+            handleSearchProfile();
             setLoad(true);
-            searchProfile(userData.uid);
         }
-    }, [load, userData, searchProfile]);
+    }, [handleSearchProfile, load]);
+
+    if (!user){
+        return <Loading size='large' />
+    }
 
     return (
-        <Navbar>
+        <Navbar imageProfile={user.imageProfile}>
             <div>
                 <Feed/>
             </div>

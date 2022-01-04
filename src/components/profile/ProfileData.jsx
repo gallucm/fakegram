@@ -21,8 +21,7 @@ export const ProfileData = ({ user, posts }) => {
                     Programador.
                     San Miguel, Buenos Aires, Argentina.
                 </p>
-            </div>
-
+            </div>  {/* Mover esto a un componente propio */}
         </div>
     )
 }
