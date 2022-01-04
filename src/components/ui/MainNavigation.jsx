@@ -20,11 +20,13 @@ export const MainNavigation = ({imageProfile}) => {
 
     return (
         <header>
-            <h1 className={classes.logo} onClick={handleHomeClick}>Fakegram</h1>
-            <input type="text" className={classes.input_search} ref={inputSearchRef} placeholder="Busca" onKeyUp={handleSearchClick} />
-            <div className={classes.buttons}>
-                <NavbarIcons/>
-                <NavbarButtonProfile imageProfile={imageProfile}/>
+            <div className={classes.navbar}>
+                <h1 className={classes.logo} onClick={handleHomeClick}>Fakegram</h1>
+                <input type="text" className={classes.input_search} ref={inputSearchRef} placeholder="Busca" onKeyUp={handleSearchClick} />
+                <div className={classes.buttons}>
+                    <NavbarIcons/>
+                    <NavbarButtonProfile imageProfile={imageProfile}/>
+                </div>
             </div>
         </header>
     )
