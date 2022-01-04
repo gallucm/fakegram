@@ -17,7 +17,7 @@ header .navbar{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 900px;
+  width: 65%;
   margin: auto;
   height: 100%;
 }
@@ -47,6 +47,8 @@ header .navbar{
   width: 16rem;
   font-size: 1rem;
   margin-top: 0.8rem;
+  margin-left: 5rem;
+  padding-left: 1rem;
   color: black;
   background-color: #fafafa;
 }

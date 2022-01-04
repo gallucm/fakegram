@@ -1,15 +1,27 @@
 .container{
     display: flex;
-    height: auto;
-    margin: auto;
-    max-height: 500px;
-    overflow-y: auto;
-    width: 500px;
-    margin-bottom: 1rem;
+    flex-direction: row;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.first_section{
+    display: flex;
+    flex-direction: row;
+    margin-top: 0.5rem;
+}
+
+.first_section button{
+    line-height: 50%;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    font-weight: 600;
 }
 
 .data{
-    margin-left: 3rem;
+    width: 65%;
 }
 
 .data h2{
@@ -31,13 +43,11 @@
 
 .stats{
     display: flex;
-    flex-direction: row;
-    
+    flex-direction: row;    
 }
 
 .stats p{
     margin-right: 1rem;
-    margin-top: 1rem;
     font-weight: 500;
     font-family: Times, serif;
 }

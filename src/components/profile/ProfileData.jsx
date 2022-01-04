@@ -8,8 +8,10 @@ export const ProfileData = ({ user, posts }) => {
         <div className={classes.container}>
             <ProfileImage user={user} />
             <div className={classes.data}>
-                <h2>{user.username}</h2>
-                <button>Editar perfil</button>
+                <div className={classes.first_section}>
+                    <h2>{user.username}</h2>
+                    <button>Editar perfil</button>
+                </div>
                 <div className={classes.stats}>
                     <p><strong>{posts.length}</strong>  publicaciones</p>
                     <p><strong>{user.info.followers}</strong>  seguidores</p>
@@ -17,11 +19,10 @@ export const ProfileData = ({ user, posts }) => {
                 </div>
                 <strong><p>{user.name}</p></strong>
                 <p>
-                    {/* {user.info.description} */}
                     Programador.
                     San Miguel, Buenos Aires, Argentina.
                 </p>
-            </div>  {/* Mover esto a un componente propio */}
+            </div> 
         </div>
     )
 }
