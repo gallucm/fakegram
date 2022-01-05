@@ -36,6 +36,10 @@
 }
 
 .btn_submit:disabled{
+    cursor: not-allowed;
+}
+
+.btn_submit:disabled{
     background: #5db9f7;
     cursor: not-allowed;
 }

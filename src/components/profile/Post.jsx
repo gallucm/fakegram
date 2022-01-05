@@ -1,10 +1,10 @@
-
 import { useState } from 'react';
-import { Loading } from '../ui/Loading';
-import classes from './Post.module.css';
 
 import DeleteIcon from '@mui/icons-material/Delete';
-import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+
+import { Loading } from '../ui/Loading';
+
+import classes from './Post.module.css';
 
 export const Post = ({ post }) => {
     const [imageLoaded, setImageLoaded] = useState(false);
@@ -18,9 +18,6 @@ export const Post = ({ post }) => {
                 imageLoaded &&
                 (
                     <div className={classes.button_container}>
-                        {/* <button className={`${classes.button} ${classes.info}`} title='Ver'>
-                            <RemoveRedEyeIcon/>
-                        </button> */}
                         <button className={`${classes.button} ${classes.danger}`} title='Eliminar'>
                             <DeleteIcon />
                         </button>

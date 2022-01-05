@@ -1,7 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
+
 import { loginUser, registerUser } from '../../actions/auth';
+
+import { Loading } from '../ui/Loading';
+
 import classes from './AuthForm.module.css';
 
 export const AuthForm = () => {
@@ -10,7 +14,7 @@ export const AuthForm = () => {
 
     const isLogin = location.pathname === '/login';
 
-    const { reset } = useSelector(state => state.ui);
+    const { reset, loading } = useSelector(state => state.ui);
 
     const nameInputRef = useRef('');
     const usernameInputRef = useRef('');
@@ -60,7 +64,20 @@ export const AuthForm = () => {
                 )
             }
             <input type="password" id="password" placeholder="Contraseña" ref={passwordInputRef} className={classes.password_input} autoComplete="off" required />
-            <button type="submit" className={classes.btn_submit}> {isLogin ? 'Iniciar sesión' : 'Registrarte'} </button>
+            <button type="submit" className={classes.btn_submit} disabled={loading}>
+                {
+                    loading 
+                    ? (<Loading size="small" />)
+                    : (
+                        isLogin 
+                            ? 'Iniciar sesión'
+                            : 'Registrarte'
+
+                    )
+                    
+                    // (isLogin && !loading) ? 'Iniciar sesión' : 'Registrarte'
+                } 
+            </button>
         </form>
     )
 }
