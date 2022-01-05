@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { usePosts } from '../../hooks/usePosts';
 import { Loading } from '../ui/Loading';
+import { ModalPost } from '../ui/ModalPost';
 import { Post } from './Post';
 import classes from './PostsSection.module.css'
 
 export const PostsSection = ({ uid }) => {
 
     const [loaded, setLoaded] = useState(false);
-
+    
     const { getPosts } = usePosts();
 
     const { loading } = useSelector(state => state.ui);
@@ -25,12 +26,15 @@ export const PostsSection = ({ uid }) => {
         return <Loading size='large' />
 
     return (
-        <div className={classes.container}>
-            {
-                posts.map(post => (
-                    <Post post={post} key={post} />
-                ))
-            }
-        </div>
+        <>
+            
+            <div className={classes.container}>
+                {
+                    posts.map(post => (
+                        <Post post={post} key={post}/>
+                    ))
+                }
+            </div>
+        </>
     )
 }
