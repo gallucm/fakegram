@@ -12,6 +12,7 @@ export const useAuthProfile = () => {
 
     const location = useLocation();
     const path = location.pathname;
+
     const username = path.replace('/', '');
 
     const handleSearchAuthProfile = async () => {

@@ -31,12 +31,10 @@ export const signIn = async (email, password) => {
 
         const profileData = await getProfileById(response.user.uid);
 
-        const { uid, ...userData } = profileData;
-
         return {
             uid: response.user.uid,
             token: response.user.accessToken,
-            userData
+            userData: profileData
         }
     } catch (error) {
         throw new Error(error.message);

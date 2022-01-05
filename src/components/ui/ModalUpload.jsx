@@ -2,12 +2,16 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import CancelIcon from '@mui/icons-material/Cancel';
+import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 
 import classes from './ModalUpload.module.css';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Loading } from './Loading';
 
 export const ModalUpload = ({ open, onCloseModal, onUploadFile }) => {
+
+    const refDescription = useRef('');
 
     const [isFileLoaded, setIsFileLoaded] = useState(false);
     const [loadFile, setLoadFile] = useState(null);
@@ -20,7 +24,7 @@ export const ModalUpload = ({ open, onCloseModal, onUploadFile }) => {
         left: '50%',
         transform: 'translate(-50%, -50%)',
         width: 500,
-        height: 550,
+        height: 600,
         bgcolor: 'background.paper',
         boxShadow: 24,
         p: 4,
@@ -43,14 +47,14 @@ export const ModalUpload = ({ open, onCloseModal, onUploadFile }) => {
 
     const onUpload = () => {
         setIsLoading(true);
-        onUploadFile(loadFile);
+        onUploadFile(loadFile, refDescription.current.value);
         setIsFileLoaded(false);
         setLoadFile(null);
         setPreviewImage(null);
     }
 
     useEffect(() => {
-        if (!open){
+        if (!open) {
             setIsFileLoaded(false);
             setLoadFile(null);
             setPreviewImage(null);
@@ -63,6 +67,8 @@ export const ModalUpload = ({ open, onCloseModal, onUploadFile }) => {
             <Modal
                 open={open}
                 onClose={onCloseModal}
+                disableEscapeKeyDown
+                hideBackdrop
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
@@ -74,27 +80,43 @@ export const ModalUpload = ({ open, onCloseModal, onUploadFile }) => {
                             (
                                 <div className={classes.post_container}>
                                     <img src={previewImage} alt="Post Pic" />
-                                    <button onClick={() => { onUpload() }}>
-                                        <CloudUploadIcon />
-                                        <span>Subir Foto</span>
-                                    </button>
+                                    <textarea name="description" id="description" ref={refDescription}>
+                                    </textarea>
+                                    <div className={classes.buttons}>
+                                        <button onClick={() => { onUpload() }}>
+                                            <CloudUploadIcon />
+                                            <span>Guardar</span>
+                                        </button>
+                                        <button className={classes.cancel} onClick={onCloseModal}>
+                                            <CancelIcon />
+                                            <span>Cancelar</span>
+                                        </button>
+                                    </div>
                                 </div>
                             )
                         }
                         {
                             !isFileLoaded && !isLoading
                             &&
-                            (
+                            (<div className={classes.upload_container}>
                                 <label className={classes.custom_file}>
                                     <input type="file" id="file-input" accept="image/png, image/gif, image/jpeg" style={{ display: 'none' }} onChange={onLoadFile} />
-                                    Seleccionar Foto
+                                    <InsertPhotoIcon />
+                                    <span>
+                                        Seleccionar
+                                    </span>
                                 </label>
+                                <button className={classes.cancel} onClick={onCloseModal}>
+                                    <CancelIcon />
+                                    <span>Cancelar</span>
+                                </button>
+                            </div>
                             )
                         }
                         {
                             (isLoading)
                             &&
-                            <Loading size="large" />
+                            <Loading size="bigger" />
                         }
                     </div>
                 </Box>

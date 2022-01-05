@@ -6,18 +6,26 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import { ModalUpload } from './ModalUpload';
 
 import classes from './NavbarIcons.module.css';
-import { uploadImage } from '../../actions/posts';
+import { createPost } from '../../actions/posts';
+import { getLoginData } from '../../services/utils';
 
-export const NavbarButtonAddPhoto = () => {
+export const NavbarButtonAddPhoto = ({user}) => {
+    
+    const { uid } = getLoginData();
+    const userStorage = {
+        uid,
+        imageProfile: user.imageProfile,
+        username: user.username,
+    }
+
     const [addPhotoDark, setAddPhotoDark] = useState(false);
-
     const [openModal, setOpenModal] = useState(false);
 
     const handleOpen = () => setOpenModal(true);
     const handleClose = () => setOpenModal(false);
 
-    const handleUploadFile = async(file) => {
-        await uploadImage(file);
+    const handleUploadFile = async(file, description) => {
+        await createPost(file, description, userStorage);
         handleClose();
     }
 

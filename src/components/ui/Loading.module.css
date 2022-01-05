@@ -17,6 +17,12 @@
     height: 80px;
 }
 
+.bigger{
+    width: 150px;
+    height: 150px;
+    margin-top: 10rem;
+}
+
 .spinner {
     border: 10px solid #f3f3f3;
     border-radius: 50%;

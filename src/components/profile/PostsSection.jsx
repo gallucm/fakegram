@@ -1,20 +1,36 @@
+import { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
+import { usePosts } from '../../hooks/usePosts';
+import { Loading } from '../ui/Loading';
+import { Post } from './Post';
 import classes from './PostsSection.module.css'
 
-export const PostsSection = ({posts}) => {
+export const PostsSection = ({ uid }) => {
+
+    const [loaded, setLoaded] = useState(false);
+
+    const { getPosts } = usePosts();
+
+    const { loading } = useSelector(state => state.ui);
+    const { posts } = useSelector(state => state.profile);
+
+    useEffect(() => {
+        if (!loaded) {
+            getPosts(uid);
+            setLoaded(true);
+        }
+    }, [getPosts, uid, loaded]);
+
+    if (loading || !posts)
+        return <Loading size='large' />
+
     return (
         <div className={classes.container}>
-                <div className={classes.post}>
-                    <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="" />
-                </div>
-                <div className={classes.post}>
-                    <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="" />
-                </div>
-                <div className={classes.post}>
-                    <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="" />
-                </div>
-                <div className={classes.post}>
-                    <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" alt="" />
-                </div>
+            {
+                posts.map(post => (
+                    <Post post={post} key={post} />
+                ))
+            }
         </div>
     )
 }

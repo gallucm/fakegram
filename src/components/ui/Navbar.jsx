@@ -21,7 +21,7 @@ export const Navbar = (props) => {
 
     return (
         <>
-            <MainNavigation imageProfile={user.imageProfile} />
+            <MainNavigation user={user} />
             <main>
                 {childrenWithProps} 
             </main>

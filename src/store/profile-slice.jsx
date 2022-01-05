@@ -17,7 +17,7 @@ const profileSlice = createSlice({
             state.user = null;
         },
 
-        loadPosts: (state, action) => {
+        setPosts: (state, action) => {
             state.posts = action.payload;
         }
     }

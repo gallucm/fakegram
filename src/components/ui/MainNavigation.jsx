@@ -5,7 +5,7 @@ import classes from './MainNavigation.module.css';
 import { NavbarButtonProfile } from './NavbarButtonProfile';
 import { NavbarIcons } from './NavbarIcons';
 
-export const MainNavigation = ({imageProfile}) => {
+export const MainNavigation = ({user}) => {
     const history = useHistory();
 
     const inputSearchRef = useRef();
@@ -24,8 +24,8 @@ export const MainNavigation = ({imageProfile}) => {
                 <h1 className={classes.logo} onClick={handleHomeClick}>Fakegram</h1>
                 <input type="text" className={classes.input_search} ref={inputSearchRef} placeholder="Busca" onKeyUp={handleSearchClick} />
                 <div className={classes.buttons}>
-                    <NavbarIcons/>
-                    <NavbarButtonProfile imageProfile={imageProfile}/>
+                    <NavbarIcons user={user}/>
+                    <NavbarButtonProfile imageProfile={user.imageProfile}/>
                 </div>
             </div>
         </header>

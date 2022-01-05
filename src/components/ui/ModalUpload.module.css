@@ -4,12 +4,16 @@
     padding: 10px;
 }
 
-
 .custom_file{
     margin: auto;
     padding: 1rem;
     border-radius: 5px;
     background: #0095f6;
+    color: white;
+    text-align: center;
+}
+
+.custom_file span{
     color: white;
 }
 
@@ -19,16 +23,28 @@
 }
 
 .post_container{
+    display: flex;
     margin: auto;
-    height: 80%;
+    width: 100%;
+    flex-direction: column;
+    height: 110%;
     text-align: center;
+    margin-top: -2rem;
+}
+
+.post_container textarea{
+    width: 99%;
+    resize: none;
+    height: 5rem;
+    outline-style: none;
 }
 
 .post_container img{
     border-radius: 1%;
-    height: 90%;
+    height: 60%;
     width: 100%;
-    margin-bottom: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .post_container button{
@@ -48,4 +64,40 @@
 .post_container button:hover{
     cursor: pointer;
     box-shadow: 1px 1px 8px #0095f6;
+}
+
+.buttons{
+    margin-top: 1rem;
+}
+
+.buttons button{
+    margin: 0.5rem;
+}
+
+.cancel {
+    background: #ccc !important;
+}
+
+.cancel:hover{
+    box-shadow: 1px 1px 8px #ccc !important;
+}
+
+.upload_container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.upload_container button{
+    background: #ccc !important;
+    border: none !important;
+    margin-top: 1rem;
+    border-radius: 5% !important;
+    padding: 0.5rem;
+    cursor: pointer;
+    color: white;
+}
+
+.upload_container button span{
+    color: white;
 }

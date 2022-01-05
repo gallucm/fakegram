@@ -9,3 +9,13 @@ export const clearLoginData = () => {
 export const getLoginData = () => {
     return JSON.parse(localStorage.getItem('user'));
 };
+
+export const getDate = () => {
+    const date = new Date();
+
+    date.setHours(date.getHours() - 3);
+
+    const dateFormat = new Date(date);
+
+    return dateFormat;
+}

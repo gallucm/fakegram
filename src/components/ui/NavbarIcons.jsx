@@ -13,7 +13,7 @@ import classes from './NavbarIcons.module.css';
 import { NavbarButtonAddPhoto } from './NavbarButtonAddPhoto';
 import { useState } from 'react';
 
-export const NavbarIcons = () => {
+export const NavbarIcons = ({user}) => {
 
     const [homeDark, setHomeDark] = useState(false);
     const [msgDark, setMsgDark] = useState(false);
@@ -35,7 +35,7 @@ export const NavbarIcons = () => {
                         : <MapsUgcOutlinedIcon className={classes.icon} titleAccess="Mensajes" onMouseOver={() => setMsgDark(true)} />
                 }
             </Link>
-            <NavbarButtonAddPhoto />
+            <NavbarButtonAddPhoto user={user} />
             {
                 favoriteDark
                     ? <FavoriteIcon className={classes.icon} titleAccess="Notificaciones" onMouseLeave={() => setFavoriteDark(false)} />
