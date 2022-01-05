@@ -1,11 +1,59 @@
-.post{
-    width: 300px;
-    height: 220px;
-    margin-bottom: 0.5rem;
+.post {
+  position: relative;
+  width: 300px;
+  height: 220px;
+  margin-bottom: 0.5rem;
 }
 
-.post img{
+.post img:hover + .button_container{
+    display: flex;
+}
+
+.button_container{
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    color: white;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 50%;
+    height: 3rem;
+    display: none;
+}
+
+.button_container:hover{
+    display: flex;
+}
+
+.button{
+    font-size: 16px;
+    color: white;
+    border: none;
     cursor: pointer;
-    width: 100%;
+    border-radius: 5px;
+    margin: auto;
     height: 100%;
+    width: 50%;
+}
+
+.button span{
+    color: white;
+}
+
+.post img {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+}
+
+.danger {
+    border: 1px solid white;
+    background: rgb(248, 180, 159);
+}
+
+.danger:hover{
+    background: rgb(247, 58, 1);
+    border: 1px solid rgb(248, 180, 159);
 }

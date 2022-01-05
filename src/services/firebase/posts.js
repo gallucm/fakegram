@@ -9,9 +9,9 @@ export const uploadImagePost = async (image) => {
 
     const snapshot = await filePathRef.put(image);
 
-    const downloadURL = await snapshot.ref.getDownloadURL();
+    const url = await snapshot.ref.getDownloadURL();
 
-    return downloadURL;
+    return {url, name};
 }
 
 export const savePost = async (description, image, user) => {
@@ -19,7 +19,8 @@ export const savePost = async (description, image, user) => {
 
     const post = {
         description: description,
-        image: image,
+        image: image.url,
+        imageName: image.name,
         ...user,
         createdAt: getDate(),
     };
@@ -29,7 +30,7 @@ export const savePost = async (description, image, user) => {
     const newPostId = newPostRef.key;
 
     const updates = {};
-    updates['/posts/' + newPostId] = post;
+    updates['/posts/' + newPostId ]= post;
 
     try{
         await nApp.database().ref().update(updates);
@@ -54,4 +55,11 @@ export const getPostsByUser = async (user) => {
     });
 
     return posts;
+}
+
+export const deleteImageName = async (imageName) => {
+    const storageRef = nApp.storage().ref();
+    const filePathRef = storageRef.child('images/posts/' + imageName);
+
+    await filePathRef.delete();
 }

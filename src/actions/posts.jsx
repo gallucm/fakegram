@@ -1,11 +1,11 @@
 import { savePost, uploadImagePost } from "../services/firebase/posts";
 
 export const createPost = async (post) => {
-    const imageUrl = uploadImagePost(post.file);
+    const data = await uploadImagePost(post.file);
 
-    if (imageUrl) {
+    if (data) {
         try {
-            await savePost(post.description, imageUrl, post.user);
+            await savePost(post.description, data, post.user);
         } catch (error) {
             throw error;
         }
