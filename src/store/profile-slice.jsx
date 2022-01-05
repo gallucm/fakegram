@@ -19,6 +19,10 @@ const profileSlice = createSlice({
 
         setPosts: (state, action) => {
             state.posts = action.payload;
+        },
+
+        setPost: (state, action) => {
+            state.posts.push(action.payload);
         }
     }
 });

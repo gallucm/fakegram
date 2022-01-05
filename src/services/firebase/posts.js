@@ -35,8 +35,7 @@ export const savePost = async (description, image, user) => {
         await nApp.database().ref().update(updates);
         done = true;
     } catch(error) {
-        console.log(error);
-        done = false;
+        throw error;
     }
 
     return done;

@@ -8,9 +8,12 @@ import { ModalUpload } from './ModalUpload';
 import classes from './NavbarIcons.module.css';
 import { createPost } from '../../actions/posts';
 import { getLoginData } from '../../services/utils';
+import { usePosts } from '../../hooks/usePosts';
 
-export const NavbarButtonAddPhoto = ({user}) => {
-    
+export const NavbarButtonAddPhoto = ({ user }) => {
+
+    const { getPosts } = usePosts();
+
     const { uid } = getLoginData();
     const userStorage = {
         uid,
@@ -22,17 +25,27 @@ export const NavbarButtonAddPhoto = ({user}) => {
     const [openModal, setOpenModal] = useState(false);
 
     const handleOpen = () => setOpenModal(true);
-    const handleClose = () => setOpenModal(false);
 
-    const handleUploadFile = async(file, description) => {
-        await createPost(file, description, userStorage);
+    const handleClose = () => {
+        setOpenModal(false);
+        getPosts(user.uid);
+    }
+
+    const handleUploadFile = async (file, description) => {
+        const post = {
+            file,
+            description,
+            user: userStorage,
+        }
+
+        await createPost(post);
         handleClose();
     }
 
     return (
         <div>
-            <ModalUpload open={openModal} onCloseModal={handleClose} onUploadFile={handleUploadFile}/>
-            
+            <ModalUpload open={openModal} onCloseModal={handleClose} onUploadFile={handleUploadFile} />
+
             {
                 addPhotoDark
                     ? <AddPhotoAlternateIcon className={classes.icon} titleAccess="Subir foto" onClick={handleOpen} onMouseLeave={() => { setAddPhotoDark(false) }} />
