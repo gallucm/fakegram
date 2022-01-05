@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    height: 100%;
+    padding: 10px;
+}
+
+
+.custom_file{
+    margin: auto;
+    padding: 1rem;
+    border-radius: 5px;
+    background: #0095f6;
+    color: white;
+}
+
+.custom_file:hover{
+    cursor: pointer;
+    box-shadow: 1px 1px 8px #0095f6;
+}
+
+.post_container{
+    margin: auto;
+    height: 80%;
+    text-align: center;
+}
+
+.post_container img{
+    border-radius: 1%;
+    height: 90%;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.post_container button{
+    margin: auto;
+    padding: 1rem;
+    border-radius: 5px;
+    background: #0095f6;
+    border: none;
+    color: white;
+}
+
+.post_container button span{
+    color: white;
+    font-weight: 600;
+}
+
+.post_container button:hover{
+    cursor: pointer;
+    box-shadow: 1px 1px 8px #0095f6;
+}
