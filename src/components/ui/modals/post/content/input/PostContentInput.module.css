@@ -1,0 +1,34 @@
+.container{
+    height: 4rem;
+    border: none;
+    border-top: 1px solid rgb(224, 224, 224);
+    display: flex;
+    flex-direction: row;
+}
+
+.container textarea{
+    width: 80%;
+    height: 100%;
+    border: none;
+    resize: none;
+    padding: 0;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    outline-style: none;
+}
+
+.container button{
+    width: 20%;
+    height: 100%;
+    border: none;
+    background: white;
+    color: #0095f6;
+    font-weight: 600;
+    cursor: pointer;
+    padding-right: 0.4rem;    
+}
+
+.container button:disabled{
+    color: #92d2fd;
+    cursor: default;
+}

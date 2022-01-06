@@ -1,4 +1,4 @@
-.container{
+.container {
     display: flex;
     flex-direction: row;
 }
@@ -12,7 +12,6 @@
     margin: 1rem;
     cursor: pointer;
 }
-
 
 .description{
     display: flex;
@@ -43,10 +42,4 @@
 .data span p {
     margin: 0;
     margin-top: 0.2rem;
-}
-
-.date time{
-    color: #ccc;
-    font-style: italic;
-    font-size: small;
 }

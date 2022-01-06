@@ -1,8 +1,6 @@
-import ReactTimeAgo from 'react-time-ago';
+import classes from './PostContentCommentary.module.css';
 
-import classes from './PostContentDescription.module.css';
-
-export const PostContentDescription = ({post}) => {
+export const PostContentCommentary = ({post}) => {
     return (
         <div className={classes.container}>
             <div className={classes.image}>
@@ -19,9 +17,6 @@ export const PostContentDescription = ({post}) => {
                             {post.description}
                         </p>
                     </span>
-                </div>
-                <div className={classes.date}>
-                    <ReactTimeAgo date={post.createdAt} locale="es" title={post.createdAt}/>
                 </div>
             </div>
         </div>

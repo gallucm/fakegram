@@ -50,6 +50,7 @@ export const getPostsByUser = async (user) => {
 
     await postsRef.orderByChild('uid').equalTo(user).once('value', (snapshot) => {
         snapshot.forEach((child) => {
+            console.log(child);
             posts.push(child.val());
         });
     });

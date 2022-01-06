@@ -14,28 +14,15 @@ export const ModalPost = ({ open, onCloseModal, post }) => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Box className={classes.box}>
-                    <section className={classes.container}>
-                        <PostImage image={post.image} />
-                        <PostContent post={post} />
-                        {/* <section className={classes.content}>
-                            <div className={classes.top_section}>
-                                <img src={post.imageProfile} alt="" />
-                                <span>{post.username}</span>
-                            </div>
-                            <div className={classes.description}>
-                                <div className={classes.text}>
-                                    <img src={post.imageProfile} alt="" />
-                                    <span>{post.username}</span>
-                                    <span>{post.description}</span>
-                                </div>
-                                <p>{post.createdAt}</p>
-                            </div>
-                            <textarea className={classes.new_comment}>
-                            </textarea>
-                        </section> */}
-                    </section>
-                </Box>
+                <>
+                    {/* <button>BOTTON CERRAR</button> */}
+                    <Box className={classes.box}>
+                        <section className={classes.container}>
+                            <PostImage image={post.image} />
+                            <PostContent post={post} /> 
+                        </section>
+                    </Box>
+                </>
             </Modal>
         </>
     )
