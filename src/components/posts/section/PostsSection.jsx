@@ -31,7 +31,7 @@ export const PostsSection = ({ uid }) => {
             <div className={classes.container}>
                 {
                     posts.map(post => (
-                        <Post post={post} key={post}/>
+                        <Post post={post} key={post.pid}/>
                     ))
                 }
             </div>

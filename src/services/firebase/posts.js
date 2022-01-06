@@ -1,5 +1,4 @@
 
-import { getDate } from "../utils";
 import { nApp } from "./config";
 
 export const uploadImagePost = async (image) => {
@@ -22,7 +21,7 @@ export const savePost = async (description, image, user) => {
         image: image.url,
         imageName: image.name,
         ...user,
-        createdAt: getDate(),
+        createdAt: new Date(),
     };
 
     const postsRef = nApp.database().ref('posts');
@@ -50,7 +49,6 @@ export const getPostsByUser = async (user) => {
 
     await postsRef.orderByChild('uid').equalTo(user).once('value', (snapshot) => {
         snapshot.forEach((child) => {
-            console.log(child);
             const post = {
                 pid: child.key,
                 ...child.val(),
@@ -70,22 +68,15 @@ export const deleteImageName = async (imageName) => {
     await filePathRef.delete();
 }
 
-export const addComment = async (comment, pid, user) => {
+export const saveComment = async (comment) => {
     let done;
 
     const commentRef = nApp.database().ref('comments');
     const newCommentRef = commentRef.push();
     const newCommentId = newCommentRef.key;
 
-    const commentObj = {
-        pid,
-        comment,
-        ...user,
-        createdAt: getDate(),
-    };
-
     const updates = {};
-    updates['/comments/' + newCommentId ]= commentObj;
+    updates['/comments/' + newCommentId ]= comment;
 
     try{
         await nApp.database().ref().update(updates);
@@ -95,4 +86,23 @@ export const addComment = async (comment, pid, user) => {
     }
 
     return done;
+}
+
+export const getCommentsByPost = async (pid) => {
+    const comments = [];
+
+    const commentsRef = nApp.database().ref('comments');
+
+    await commentsRef.orderByChild('pid').equalTo(pid).once('value', (snapshot) => {
+        snapshot.forEach((child) => {
+            const comment = {
+                cid: child.key,
+                ...child.val(),
+            };
+
+            comments.push(comment);
+        });
+    });
+
+    return comments;
 }

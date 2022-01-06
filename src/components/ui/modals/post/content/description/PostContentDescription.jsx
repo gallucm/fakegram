@@ -21,7 +21,7 @@ export const PostContentDescription = ({post}) => {
                     </span>
                 </div>
                 <div className={classes.date}>
-                    <ReactTimeAgo date={post.createdAt} locale="es" title={post.createdAt}/>
+                    <ReactTimeAgo date={new Date(post.createdAt)} locale="es" title={post.createdAt}/>
                 </div>
             </div>
         </div>

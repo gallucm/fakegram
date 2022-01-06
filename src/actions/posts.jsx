@@ -1,4 +1,5 @@
-import { savePost, uploadImagePost } from "../services/firebase/posts";
+import { getCommentsByPost, saveComment, savePost, uploadImagePost } from "../services/firebase/posts";
+import { postActions } from "../store/post-slice";
 
 export const createPost = async (post) => {
     const data = await uploadImagePost(post.file);
@@ -10,5 +11,37 @@ export const createPost = async (post) => {
             throw error;
         }
     }
+}
 
+export const addComment = (comment, reset) => {
+    return async (dispatch) => {
+        try {
+            const ok = await saveComment(comment);
+
+            if (ok) {
+                dispatch(postActions.addComment(comment));
+            }
+        } catch (error) {
+            throw error;
+        } finally {
+            reset();
+        }
+    }
+}
+
+export const getPostComments = (pid, setLoaded) => {
+    return async (dispatch) => {
+        try {
+            const comments = await getCommentsByPost(pid);
+
+            if (comments) {
+                dispatch(postActions.setComments(comments));
+            }
+
+        } catch (error) {
+            throw error;
+        } finally {
+            setLoaded(true);
+        }
+    }
 }
