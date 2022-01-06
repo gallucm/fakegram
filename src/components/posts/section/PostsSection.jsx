@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
-import { usePosts } from '../../hooks/usePosts';
-import { Loading } from '../ui/Loading';
-import { ModalPost } from '../ui/ModalPost';
-import { Post } from './Post';
+
+import { usePosts } from '../../../hooks/usePosts';
+import { Loading } from '../../ui/loading/Loading';
+import { Post } from '../main/Post';
+
 import classes from './PostsSection.module.css'
 
 export const PostsSection = ({ uid }) => {
@@ -27,7 +28,6 @@ export const PostsSection = ({ uid }) => {
 
     return (
         <>
-            
             <div className={classes.container}>
                 {
                     posts.map(post => (

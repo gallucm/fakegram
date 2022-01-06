@@ -2,9 +2,8 @@ import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 
-import { loginUser, registerUser } from '../../actions/auth';
-
-import { Loading } from '../ui/Loading';
+import { loginUser, registerUser } from '../../../actions/auth';
+import { Loading } from '../../ui/loading/Loading';
 
 import classes from './AuthForm.module.css';
 
@@ -68,14 +67,7 @@ export const AuthForm = () => {
                 {
                     loading 
                     ? (<Loading size="small" />)
-                    : (
-                        isLogin 
-                            ? 'Iniciar sesión'
-                            : 'Registrarte'
-
-                    )
-                    
-                    // (isLogin && !loading) ? 'Iniciar sesión' : 'Registrarte'
+                    : (isLogin ? 'Iniciar sesión' : 'Registrarte')
                 } 
             </button>
         </form>

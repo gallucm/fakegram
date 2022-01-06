@@ -2,9 +2,9 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { authActions } from '../../store/auth-slice';
-import { profileActions } from '../../store/profile-slice';
-import { Loading } from "./Loading";
+import { authActions } from '../../../../../store/auth-slice';
+import { profileActions } from '../../../../../store/profile-slice';
+import { Loading } from "../../../loading/Loading";
 
 import classes from "./NavbarButtonProfile.module.css";
 

@@ -1,5 +1,5 @@
 import { Feed } from '../components/feed/Feed';
-import { Navbar } from '../components/ui/Navbar'
+import { Navbar } from '../components/ui/navbar/Navbar';
 
 export const Index = () => {
     return (

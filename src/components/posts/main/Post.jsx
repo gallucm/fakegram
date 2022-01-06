@@ -2,10 +2,10 @@ import { useState } from 'react';
 
 import DeleteIcon from '@mui/icons-material/Delete';
 
-import { Loading } from '../ui/Loading';
-import { ModalPost } from '../ui/ModalPost';
 
 import classes from './Post.module.css';
+import { Loading } from '../../ui/loading/Loading';
+import { ModalPost } from '../../ui/modals/post/ModalPost';
 
 export const Post = ({ post }) => {
     const [imageLoaded, setImageLoaded] = useState(false);

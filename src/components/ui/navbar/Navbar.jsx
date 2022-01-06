@@ -1,8 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-
-import { Loading } from './Loading';
-import { MainNavigation } from './MainNavigation';
+import { Loading } from '../loading/Loading';
+import { MainNavigation } from './main/MainNavigation';
 
 export const Navbar = (props) => {
 

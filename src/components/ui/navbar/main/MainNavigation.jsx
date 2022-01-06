@@ -2,8 +2,8 @@ import { useRef } from 'react'
 import { useHistory } from 'react-router';
 
 import classes from './MainNavigation.module.css';
-import { NavbarButtonProfile } from './NavbarButtonProfile';
-import { NavbarIcons } from './NavbarIcons';
+import { NavbarButtonProfile } from '../buttons/profile/NavbarButtonProfile';
+import { NavbarIcons } from '../icons/NavbarIcons';
 
 export const MainNavigation = ({user}) => {
     const history = useHistory();

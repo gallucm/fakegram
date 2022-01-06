@@ -2,9 +2,9 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { updateImage } from '../../actions/profile';
-import { profileActions } from '../../store/profile-slice';
-import { Loading } from '../ui/Loading';
+import { updateImage } from '../../../actions/profile';
+import { profileActions } from '../../../store/profile-slice';
+import { Loading } from '../../ui/loading/Loading';
 
 import classes from './ProfileImage.module.css';
 

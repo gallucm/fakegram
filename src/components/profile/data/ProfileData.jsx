@@ -1,4 +1,4 @@
-import { ProfileImage } from './Profileimage';
+import { ProfileImage } from '../image/Profileimage';
 
 import classes from './ProfileData.module.css';
 

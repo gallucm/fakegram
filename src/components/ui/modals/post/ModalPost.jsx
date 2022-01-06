@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 
 import classes from './ModalPost.module.css';
 
-export const ModalPost = ({open, onCloseModal, post}) => {
+export const ModalPost = ({ open, onCloseModal, post }) => {
     return (
         <>
             <Modal
@@ -15,7 +15,7 @@ export const ModalPost = ({open, onCloseModal, post}) => {
                 <Box className={classes.box}>
                     <section className={classes.container}>
                         <div className={classes.picture}>
-                            <img src={post.image} alt='post'/>
+                            <img src={post.image} alt='post' />
                         </div>
                         <section className={classes.content}>
                             <div className={classes.top_section}>
@@ -23,12 +23,15 @@ export const ModalPost = ({open, onCloseModal, post}) => {
                                 <span>{post.username}</span>
                             </div>
                             <div className={classes.description}>
-                                <img src={post.imageProfile} alt="" />
-                                <span>{post.username}</span>
-                                <p>{post.description}</p>
+                                <div className={classes.text}>
+                                    <img src={post.imageProfile} alt="" />
+                                    <span>{post.username}</span>
+                                    <span>{post.description}</span>
+                                </div>
+                                <p>{post.createdAt}</p>
                             </div>
                             <textarea className={classes.new_comment}>
-                            </textarea>                              
+                            </textarea>
                         </section>
                     </section>
                 </Box>

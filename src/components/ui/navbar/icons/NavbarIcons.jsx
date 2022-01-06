@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
@@ -9,9 +10,9 @@ import HomeIcon from '@mui/icons-material/Home';
 import MapsUgcOutlinedIcon from '@mui/icons-material/MapsUgcOutlined';
 import MapsUgcIcon from '@mui/icons-material/MapsUgc';
 
+
 import classes from './NavbarIcons.module.css';
-import { NavbarButtonAddPhoto } from './NavbarButtonAddPhoto';
-import { useState } from 'react';
+import { NavbarButtonAddPhoto } from '../buttons/addPhoto/NavbarButtonAddPhoto';
 
 export const NavbarIcons = ({user}) => {
 

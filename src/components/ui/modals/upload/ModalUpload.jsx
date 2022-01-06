@@ -7,7 +7,7 @@ import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 
 import classes from './ModalUpload.module.css';
 import { useEffect, useRef, useState } from 'react';
-import { Loading } from './Loading';
+import { Loading } from '../../loading/Loading';
 
 export const ModalUpload = ({ open, onCloseModal, onUploadFile }) => {
 

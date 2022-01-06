@@ -1,6 +1,6 @@
-import { ProfileSection } from '../components/profile/ProfileSection';
 
-import { Navbar } from '../components/ui/Navbar';
+import { ProfileSection } from '../components/profile/section/ProfileSection';
+import { Navbar } from '../components/ui/navbar/Navbar';
 
 export const Profile = () => {
 

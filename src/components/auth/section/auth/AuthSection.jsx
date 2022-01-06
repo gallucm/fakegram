@@ -1,8 +1,7 @@
 import { useSelector } from 'react-redux';
-
-import { Alert } from '../ui/Alert';
-import { AuthForm } from './AuthForm';
-import { LinkSection } from './LinkSection';
+import { Alert } from '../../../ui/alert/Alert';
+import { AuthForm } from '../../form/AuthForm';
+import { LinkSection } from '../links/LinkSection';
 
 import classes from './AuthSection.module.css';
 

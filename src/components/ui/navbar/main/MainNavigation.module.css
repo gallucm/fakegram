@@ -1,11 +1,4 @@
 
-@font-face {
-  font-family: 'Billabong';
-  font-style: normal;
-  font-weight: normal;
-  src: url('../../assets/fonts/Billabong.woff');
-}
-
 header {
   background: white;
   border-bottom: 1px solid #ccc;

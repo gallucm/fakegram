@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { Switch, Redirect } from "react-router-dom";
-import { Loading } from "./components/ui/Loading";
 
 import { PrivateRoute } from "./router/PrivateRoute";
 import { PublicRoute } from "./router/PublicRoute";
@@ -13,6 +12,7 @@ import { AuthPage } from "./pages/AuthPage";
 import { Index } from "./pages/MainPage";
 import { MessagesPage } from "./pages/MessagesPage";
 import { Profile } from "./pages/ProfilePage";
+import { Loading } from "./components/ui/loading/Loading";
 
 export const App = () => {
   const [loadUse, checkIfLogged] = useLogin();

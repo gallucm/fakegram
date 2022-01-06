@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
-import { AuthSection } from '../components/auth/AuthSection'
-import { LinksSection } from '../components/auth/LinksSection'
+import { AuthSection } from '../components/auth/section/auth/AuthSection';
+import { LinksSection } from '../components/auth/section/links/LinksSection';
 import { uiActions } from '../store/ui-slice';
 
 export const AuthPage = () => {

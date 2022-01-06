@@ -1,12 +1,14 @@
-import classes from './ProfileSection.module.css';
-// import { ProfileImage } from './Profileimage';
-import { ProfileData } from './ProfileData';
 import { useEffect } from 'react';
-import { Loading } from '../ui/Loading';
 import { useSelector } from 'react-redux';
 import { useLocation } from 'react-router-dom';
-import { useAuthProfile } from '../../hooks/useAuthProfile';
-import { PostsSection } from './PostsSection';
+
+import { useAuthProfile } from '../../../hooks/useAuthProfile';
+
+import { Loading } from '../../ui/loading/Loading';
+
+import classes from './ProfileSection.module.css';
+import { PostsSection } from '../../posts/section/PostsSection';
+import { ProfileData } from '../data/ProfileData';
 
 export const ProfileSection = ({ userProp }) => {
 

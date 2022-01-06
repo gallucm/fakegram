@@ -3,12 +3,12 @@ import { useState } from 'react';
 import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
 import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 
-import { ModalUpload } from './ModalUpload';
 
-import classes from './NavbarIcons.module.css';
-import { createPost } from '../../actions/posts';
-import { getLoginData } from '../../services/utils';
-import { usePosts } from '../../hooks/usePosts';
+import classes from '../../icons/NavbarIcons.module.css';
+import { getLoginData } from '../../../../../services/utils';
+import { createPost } from '../../../../../actions/posts';
+import { usePosts } from '../../../../../hooks/usePosts';
+import { ModalUpload } from '../../../modals/upload/ModalUpload';
 
 export const NavbarButtonAddPhoto = ({ user }) => {
 

@@ -1,5 +1,4 @@
-import React from 'react'
-import { Navbar } from '../components/ui/Navbar'
+import { Navbar } from "../components/ui/navbar/Navbar"
 
 export const MessagesPage = () => {
     return (
