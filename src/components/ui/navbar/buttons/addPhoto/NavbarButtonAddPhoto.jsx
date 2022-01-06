@@ -15,6 +15,7 @@ export const NavbarButtonAddPhoto = ({ user }) => {
     const { getPosts } = usePosts();
 
     const { uid } = getLoginData();
+    
     const userStorage = {
         uid,
         imageProfile: user.imageProfile,

@@ -1,0 +1,18 @@
+.container{
+    width: 40%;
+    height: 100%;
+    position: relative;
+}
+
+.new_comment{
+    width: 99%;
+    resize: none;
+    position: absolute;
+    border: none;
+    border-top: 1px solid #ccc;
+    outline-style: none;
+    bottom: 0%;
+    height: 3rem;
+    padding: 0.1rem;
+    color: gray;
+}

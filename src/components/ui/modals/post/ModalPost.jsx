@@ -2,6 +2,8 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 
 import classes from './ModalPost.module.css';
+import { PostImage } from './image/PostImage';
+import { PostContent } from './content/PostContent';
 
 export const ModalPost = ({ open, onCloseModal, post }) => {
     return (
@@ -14,10 +16,9 @@ export const ModalPost = ({ open, onCloseModal, post }) => {
             >
                 <Box className={classes.box}>
                     <section className={classes.container}>
-                        <div className={classes.picture}>
-                            <img src={post.image} alt='post' />
-                        </div>
-                        <section className={classes.content}>
+                        <PostImage image={post.image} />
+                        <PostContent post={post} />
+                        {/* <section className={classes.content}>
                             <div className={classes.top_section}>
                                 <img src={post.imageProfile} alt="" />
                                 <span>{post.username}</span>
@@ -32,7 +33,7 @@ export const ModalPost = ({ open, onCloseModal, post }) => {
                             </div>
                             <textarea className={classes.new_comment}>
                             </textarea>
-                        </section>
+                        </section> */}
                     </section>
                 </Box>
             </Modal>
