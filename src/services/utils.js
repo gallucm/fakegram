@@ -13,9 +13,9 @@ export const getLoginData = () => {
 export const getDate = () => {
     const date = new Date();
 
-    date.setHours(date.getHours() - 3);
+    // date.setHours(date.getHours() - 3);
 
-    const dateFormat = new Date(date);
+    // const dateFormat = new Date(date);
 
-    return dateFormat;
+    return date;
 }

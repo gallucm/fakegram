@@ -51,7 +51,12 @@ export const getPostsByUser = async (user) => {
     await postsRef.orderByChild('uid').equalTo(user).once('value', (snapshot) => {
         snapshot.forEach((child) => {
             console.log(child);
-            posts.push(child.val());
+            const post = {
+                pid: child.key,
+                ...child.val(),
+            };
+
+            posts.push(post);
         });
     });
 
@@ -63,4 +68,31 @@ export const deleteImageName = async (imageName) => {
     const filePathRef = storageRef.child('images/posts/' + imageName);
 
     await filePathRef.delete();
+}
+
+export const addComment = async (comment, pid, user) => {
+    let done;
+
+    const commentRef = nApp.database().ref('comments');
+    const newCommentRef = commentRef.push();
+    const newCommentId = newCommentRef.key;
+
+    const commentObj = {
+        pid,
+        comment,
+        ...user,
+        createdAt: getDate(),
+    };
+
+    const updates = {};
+    updates['/comments/' + newCommentId ]= commentObj;
+
+    try{
+        await nApp.database().ref().update(updates);
+        done = true;
+    } catch(error) {
+        throw error;
+    }
+
+    return done;
 }
