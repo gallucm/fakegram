@@ -1,16 +1,43 @@
+.container {
+  margin: auto;
+  position: relative;
+  text-align: center;
+}
 
-.container{
-    margin: auto;
+.container:hover{
+    /* filter: brightness(60%); */
+    opacity: 0.8;
+}
+
+.text {
+  color: white;
+  font-weight: bold;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+}
+
+.text:hover{
+    display: block;
+    cursor: pointer;
 }
 
 .container input {
-    display: none;
+  display: none;
 }
 
-.container img{
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    cursor: pointer;
-    margin: auto;
+.container img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: auto;
+  border: 2px solid #ccc;
+  padding: 0.3rem;
+}
+
+.image:hover + .text {
+    display: block;
 }

@@ -41,6 +41,22 @@ export const savePost = async (description, image, user) => {
     return done;
 }
 
+export const deletePost = async (postId, postImageName) => {
+    let done;
+
+    try{
+        await nApp.database().ref('posts/' + postId).remove();
+
+        await deletePostImage(postImageName);
+        
+        done = true;
+    } catch(error) {
+        throw error;
+    }
+
+    return done;
+}
+
 export const getPostsByUser = async (user) => {
 
     const posts = [];
@@ -61,7 +77,7 @@ export const getPostsByUser = async (user) => {
     return posts;
 }
 
-export const deleteImageName = async (imageName) => {
+const deletePostImage = async (imageName) => {
     const storageRef = nApp.storage().ref();
     const filePathRef = storageRef.child('images/posts/' + imageName);
 
@@ -82,6 +98,23 @@ export const saveComment = async (comment) => {
         await nApp.database().ref().update(updates);
         done = true;
     } catch(error) {
+        throw error;
+    }
+
+    return done;
+}
+
+export const deleteComment = async (cid) => {
+    let done;
+
+    const commentRef = nApp.database().ref('comments');
+    const commentPath = commentRef.child(cid);
+
+    try{
+        await commentPath.remove();
+        done = true;
+    }
+    catch(error) {
         throw error;
     }
 

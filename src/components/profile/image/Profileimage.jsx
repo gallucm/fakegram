@@ -31,7 +31,8 @@ export const ProfileImage = ({user}) => {
     return (
         <div className={classes.container}>
             <label htmlFor="file-input">
-                <img src={user.imageProfile} alt="Profile Pic" onLoad={handleImageLoad} style={imageLoad ? { display: 'inherit' } : { display: 'none' }} /> 
+                <img src={user.imageProfile} alt="Profile Pic" className={classes.image} onLoad={handleImageLoad} style={imageLoad ? { display: 'inherit' } : { display: 'none' }} /> 
+                <div className={classes.text}>Seleccionar Foto</div>
                 {
                     !imageLoad && 
                     <Loading/>

@@ -20,3 +20,13 @@
     font-family: 'Roboto', sans-serif;
     line-height: 2rem;
 }
+
+.btn_options{
+    position: absolute;
+    right: 0.5rem;
+    top: 1rem;
+}
+
+.btn_options:hover{
+    cursor: pointer;
+}
