@@ -30,6 +30,10 @@ const profileSlice = createSlice({
             state.posts = [];
         },
 
+        removePost: (state, action) => {
+            state.posts = state.posts.filter(post => post.pid !== action.payload);
+        },
+
         setPostSelected: (state, action) => {
             state.postSelected = action.payload;
         },

@@ -1,15 +1,14 @@
 import { useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addComment } from '../../../../../actions/posts';
+import { useSelector } from 'react-redux';
+import { usePosts } from '../../../../../hooks/usePosts';
 import classes from './PostContentInput.module.css';
 
 export const PostContentInput = ({pid, onMoveScroll}) => {
-
-    const [validSubmit, setValidSubmit] = useState(false);
-
+    const { addComment } = usePosts();
+    
     const inputRef = useRef('');
 
-    const dispatch = useDispatch();
+    const [validSubmit, setValidSubmit] = useState(false);
     
     const { user } = useSelector(state => state.auth);
 
@@ -30,7 +29,7 @@ export const PostContentInput = ({pid, onMoveScroll}) => {
             createdAt: new Date()
         }
 
-        dispatch(addComment(commentObject, handleReset));
+        addComment(commentObject, handleReset);
 
         onMoveScroll();
     }

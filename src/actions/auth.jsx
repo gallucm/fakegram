@@ -32,8 +32,6 @@ export const loginUser = (user) => {
 
             const response = await signIn(email, password);
 
-            console.log(response);
-
             if (response)
                 dispatch(authActions.login(response));            
         } catch (error) {

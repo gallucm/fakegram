@@ -4,11 +4,12 @@ import { useState } from 'react';
 import classes from './Post.module.css';
 import { Loading } from '../../ui/loading/Loading';
 import { ModalPost } from '../../modals/post/ModalPost';
-import { useDispatch, useSelector } from 'react-redux';
-import { setSelectedPost } from '../../../actions/posts';
+import { useSelector } from 'react-redux';
+import { usePosts } from '../../../hooks/usePosts';
 
 export const Post = ({ post }) => {
-    const dispatch = useDispatch();
+
+    const { setSelectedPost } = usePosts();
 
     const { postSelected } = useSelector(state => state.profile);
 
@@ -18,7 +19,7 @@ export const Post = ({ post }) => {
     const handleLoadImage = () => setImageLoaded(true);
 
     const handleOpenModal = () => {
-        dispatch(setSelectedPost(post));
+        setSelectedPost(post);
         setOpenModal(true);
     }
     

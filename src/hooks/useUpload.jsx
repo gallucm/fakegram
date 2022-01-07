@@ -1,12 +1,11 @@
 import { useDispatch } from "react-redux";
-import { createPost } from "../actions/posts"
 import { uiActions } from "../store/ui-slice";
 import { usePosts } from "./usePosts"
 
 export const useUpload = () => {
     const dispatch = useDispatch();
 
-    const { getPosts } = usePosts();
+    const { getPosts, createPost } = usePosts();
 
     const handleUpload = async (file, description, user) => {
         try {
