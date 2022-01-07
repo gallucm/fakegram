@@ -1,23 +1,25 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPostComments } from '../../../../../actions/posts';
+import { usePosts } from '../../../../../hooks/usePosts';
 import { Loading } from '../../../../ui/loading/Loading';
 import { PostContentCommentary } from './comment/PostContentCommentary';
 import classes from './PostContentComments.module.css';
 
 export const PostContentComments = ({pid}) => {
-
-    const [loaded, setLoaded] = useState(false);
-
     const dispatch = useDispatch();
 
-    const { comments } = useSelector(state => state.post);
+    const {commentsLoaded, getPostComments } = usePosts();
+
+    const { postSelected: { comments } } = useSelector(state => state.profile);
 
     useEffect(() => {
-        dispatch(getPostComments(pid, setLoaded));
-    }, [dispatch, pid]);
+        if (!commentsLoaded) {
+            getPostComments(pid);
+        }
+    }, [dispatch, pid, getPostComments, commentsLoaded]);
 
-    if (!loaded) 
+
+    if (!commentsLoaded) 
         return <Loading size="bigger"/>
 
     return (

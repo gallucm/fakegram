@@ -6,6 +6,7 @@ import { PostImage } from './image/PostImage';
 import { PostContent } from './content/PostContent';
 
 export const ModalPost = ({ open, onCloseModal, post }) => {
+
     return (
         <>
             <Modal

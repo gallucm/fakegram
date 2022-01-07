@@ -1,4 +1,4 @@
-import { deletePostById, getCommentsByPost, saveComment, savePost, uploadImagePost } from "../services/firebase/posts";
+import { deletePostById, saveComment, savePost, uploadImagePost } from "../services/firebase/posts";
 import { profileActions } from "../store/profile-slice";
 
 export const createPost = async (post) => {
@@ -45,19 +45,12 @@ export const addComment = (comment, reset) => {
     }
 }
 
-export const getPostComments = (pid, setLoaded) => {
+export const setSelectedPost = (post) => {
     return async (dispatch) => {
         try {
-            const comments = await getCommentsByPost(pid);
-
-            if (comments) {
-                dispatch(profileActions.setComments(comments));
-            }
-
+            dispatch(profileActions.setPostSelected(post));
         } catch (error) {
             throw error;
-        } finally {
-            setLoaded(true);
         }
     }
 }
