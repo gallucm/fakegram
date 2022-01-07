@@ -64,6 +64,10 @@
   background-color: #fafafa;
 }
 
+.border {
+  border: 2px solid gray;
+}
+
 .dropdown:hover .options {display: block;}
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}

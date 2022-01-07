@@ -68,7 +68,6 @@ export const ModalUpload = ({ open, onCloseModal, onUploadFile }) => {
                 open={open}
                 onClose={onCloseModal}
                 disableEscapeKeyDown
-                hideBackdrop
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >

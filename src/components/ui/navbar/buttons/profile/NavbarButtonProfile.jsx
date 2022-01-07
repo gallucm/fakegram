@@ -8,7 +8,7 @@ import { Loading } from "../../../loading/Loading";
 
 import classes from "./NavbarButtonProfile.module.css";
 
-export const NavbarButtonProfile = ({ imageProfile }) => {
+export const NavbarButtonProfile = ({ imageProfile, option }) => {
     const [imageLoad, setImageLoad] = useState(false);
 
     const dispatch = useDispatch();
@@ -28,7 +28,7 @@ export const NavbarButtonProfile = ({ imageProfile }) => {
             <div className={classes.dropdown}>
                 {
                     imageProfile &&
-                    <img src={imageProfile} alt="Avatar" className={classes.avatar} onLoad={handleImageLoad} style={imageLoad ? { display: 'inherit' } : { display: 'none' }} title="Menu" />
+                    <img src={imageProfile} alt="Avatar" className={`${classes.avatar} ${option === 'profile' ? classes.border : ''}`} onLoad={handleImageLoad} style={imageLoad ? { display: 'inherit' } : { display: 'none' }} title="Menu" />
                 }
                 {
                     !imageLoad &&
