@@ -23,8 +23,9 @@ export const PostsSection = ({ uid }) => {
         }
     }, [getPosts, uid, loaded]);
 
-    if (loading || !posts)
+    if (loading){
         return <Loading size='large' />
+    }
 
     return (
         <>
