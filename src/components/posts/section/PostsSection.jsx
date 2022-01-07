@@ -21,9 +21,9 @@ export const PostsSection = ({ uid }) => {
             getPosts(uid);
             setLoaded(true);
         }
-    }, [getPosts, uid, loaded]);
+    }, [getPosts, uid, loaded, loading]);
 
-    if (loading){
+    if (loading) {
         return <Loading size='large' />
     }
 
@@ -31,8 +31,8 @@ export const PostsSection = ({ uid }) => {
         <>
             <div className={classes.container}>
                 {
-                    posts.map(post => (
-                        <Post post={post} key={post.pid}/>
+                    posts.map((post, idx) => (
+                        <Post post={post} key={idx}/>
                     ))
                 }
             </div>

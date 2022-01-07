@@ -14,7 +14,6 @@ export const ModalPost = ({ open, onCloseModal, post }) => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                {/* <button>BOTTON CERRAR</button> */}
                 <Box className={classes.box}>
                     <section className={classes.container}>
                         <PostImage image={post.image} />

@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addComment } from '../../../../../../actions/posts';
+import { addComment } from '../../../../../actions/posts';
 import classes from './PostContentInput.module.css';
 
 export const PostContentInput = ({pid, onMoveScroll}) => {

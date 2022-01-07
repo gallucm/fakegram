@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import classes from './Post.module.css';
 import { Loading } from '../../ui/loading/Loading';
-import { ModalPost } from '../../ui/modals/post/ModalPost';
+import { ModalPost } from '../../modals/post/ModalPost';
 
 export const Post = ({ post }) => {
     const [imageLoaded, setImageLoaded] = useState(false);

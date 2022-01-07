@@ -6,17 +6,18 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import InsertPhotoIcon from '@mui/icons-material/InsertPhoto';
 
 import classes from './ModalUpload.module.css';
-import { useEffect, useRef, useState } from 'react';
-import { Loading } from '../../loading/Loading';
+import {useRef, useState } from 'react';
+import { useUpload } from '../../../hooks/useUpload';
 
-export const ModalUpload = ({ open, onCloseModal, onUploadFile }) => {
+export const ModalUpload = ({ open, onCloseModal, user }) => {
+
+    const {handleUpload } = useUpload();
 
     const refDescription = useRef('');
 
     const [isFileLoaded, setIsFileLoaded] = useState(false);
     const [loadFile, setLoadFile] = useState(null);
     const [previewImage, setPreviewImage] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
 
     const style = {
         position: 'absolute',
@@ -46,21 +47,10 @@ export const ModalUpload = ({ open, onCloseModal, onUploadFile }) => {
     }
 
     const onUpload = () => {
-        setIsLoading(true);
-        onUploadFile(loadFile, refDescription.current.value);
-        setIsFileLoaded(false);
-        setLoadFile(null);
-        setPreviewImage(null);
-    }
+        handleUpload(loadFile, refDescription.current.value, user);
 
-    useEffect(() => {
-        if (!open) {
-            setIsFileLoaded(false);
-            setLoadFile(null);
-            setPreviewImage(null);
-            setIsLoading(false);
-        }
-    }, [open]);
+        onCloseModal();
+    }
 
     return (
         <>
@@ -74,7 +64,7 @@ export const ModalUpload = ({ open, onCloseModal, onUploadFile }) => {
                 <Box sx={style} style={{ outlineStyle: 'none' }}>
                     <div className={classes.container}>
                         {
-                            isFileLoaded && !isLoading
+                            isFileLoaded
                             &&
                             (
                                 <div className={classes.post_container}>
@@ -95,7 +85,7 @@ export const ModalUpload = ({ open, onCloseModal, onUploadFile }) => {
                             )
                         }
                         {
-                            !isFileLoaded && !isLoading
+                            !isFileLoaded
                             &&
                             (<div className={classes.upload_container}>
                                 <label className={classes.custom_file}>
@@ -111,12 +101,7 @@ export const ModalUpload = ({ open, onCloseModal, onUploadFile }) => {
                                 </button>
                             </div>
                             )
-                        }
-                        {
-                            (isLoading)
-                            &&
-                            <Loading size="bigger" />
-                        }
+                        }                        
                     </div>
                 </Box>
             </Modal>

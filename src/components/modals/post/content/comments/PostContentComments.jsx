@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPostComments } from '../../../../../../actions/posts';
-import { Loading } from '../../../../loading/Loading';
+import { getPostComments } from '../../../../../actions/posts';
+import { Loading } from '../../../../ui/loading/Loading';
 import { PostContentCommentary } from './comment/PostContentCommentary';
 import classes from './PostContentComments.module.css';
 
@@ -21,7 +21,7 @@ export const PostContentComments = ({pid}) => {
         return <Loading size="bigger"/>
 
     return (
-        <div className={classes.container}>
+        <div className={classes.container} id="comments">
             {
                 comments.map((comment, idx) => (
                     <PostContentCommentary key={idx} commentary={comment} />

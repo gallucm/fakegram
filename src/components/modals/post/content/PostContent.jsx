@@ -8,11 +8,8 @@ import classes from './PostContent.module.css';
 export const PostContent = ({ post }) => {
 
     const handleMoveScroll = () => {
-
         const postComments = document.getElementById('middleContent');
-        // postComments.scrollTo(0, (postComments.scrollHeight));
         postComments.scrollTop = postComments.scrollHeight;
-        // postComments.scrollTop = postComments.scrollTo(0, postComments.scrollHeight);
     }
 
     return (

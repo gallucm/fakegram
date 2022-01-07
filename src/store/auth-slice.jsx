@@ -4,8 +4,8 @@ import { clearLoginData, saveLoginData } from "../services/utils";
 const initialState = {
     uid: null,
     token: null,
+    isLoggedIn: false,
     user: null,
-    isLoggedIn: false
 }
 
 const authSlice = createSlice({

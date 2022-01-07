@@ -4,7 +4,7 @@ import { nApp } from "./config";
 export const uploadImagePost = async (image) => {
     const name = 'pic_' + Date.now();
     const storageRef = nApp.storage().ref();
-    const filePathRef = storageRef.child('images/posts/' + name);
+    const filePathRef = storageRef.child('images/post/' + name);
 
     const snapshot = await filePathRef.put(image);
 
@@ -14,8 +14,6 @@ export const uploadImagePost = async (image) => {
 }
 
 export const savePost = async (description, image, user) => {
-    let done;
-
     const post = {
         description: description,
         image: image.url,
@@ -33,15 +31,12 @@ export const savePost = async (description, image, user) => {
 
     try{
         await nApp.database().ref().update(updates);
-        done = true;
     } catch(error) {
         throw error;
     }
-
-    return done;
 }
 
-export const deletePost = async (postId, postImageName) => {
+export const deletePostById = async (postId, postImageName) => {
     let done;
 
     try{
@@ -79,7 +74,7 @@ export const getPostsByUser = async (user) => {
 
 const deletePostImage = async (imageName) => {
     const storageRef = nApp.storage().ref();
-    const filePathRef = storageRef.child('images/posts/' + imageName);
+    const filePathRef = storageRef.child('images/post/' + imageName);
 
     await filePathRef.delete();
 }

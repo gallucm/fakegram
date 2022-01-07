@@ -4,7 +4,7 @@ const initialState = {
     loading: false,
     message: null,
     reset: false,
-    error: null
+    error: null,
 }
 
 const uiSlice = createSlice({
