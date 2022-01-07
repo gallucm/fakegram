@@ -8,4 +8,6 @@
 
 .middle_content{
     height: 100%;
+    max-height: 28.5rem;
+    overflow-y: auto;
 }

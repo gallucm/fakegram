@@ -32,6 +32,14 @@ header .navbar{
   cursor: pointer;
 }
 
+.logo:active{
+  color: #ccc;
+}
+
+.logo::selection{
+  background: transparent;
+}
+
 .input_search {
   border: none;
   border-radius: 0.2rem;
