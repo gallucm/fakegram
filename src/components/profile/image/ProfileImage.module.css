@@ -1,6 +1,8 @@
 .container {
-  margin: auto;
   text-align: center;
+  margin-right: 2rem;
+  margin-top: 1rem;
+
 }
 
 .container img {
@@ -8,7 +10,13 @@
   height: 150px;
   border-radius: 50%;
   cursor: default;
-  margin: auto;
   border: 2px solid #ccc;
   padding: 0.3rem;
+  margin: auto;
+}
+
+@media screen and (max-width: 719px){
+  .container {
+    margin-right: 0;
+  }
 }

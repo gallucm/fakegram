@@ -24,6 +24,18 @@ header .navbar h1 {
   padding-left: 1rem;
 }
 
+header .navbar h1:hover{
+  cursor: pointer;
+}
+
+header .navbar h1:active{
+  color: #ccc;
+}
+
+header .navbar h1::selection{
+  background: transparent;
+}
+
 header .navbar input {
   border: none;
   border-radius: 0.2rem;
@@ -48,4 +60,10 @@ header .navbar .buttons{
   display: flex;
   padding-right: 1rem;
   padding-top: 0.5rem;
+}
+
+@media (max-width: 719px) {
+  header .navbar input {
+    display: none;
+  }
 }

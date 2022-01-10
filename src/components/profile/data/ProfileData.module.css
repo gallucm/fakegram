@@ -1,21 +1,8 @@
-/* .container{
-    display: flex;
-    flex-direction: row;
-    margin-top: 1rem;
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #ccc;
-
-    border: 1px solid red;
-} */
-
 .container{
     display: flex;
-    flex-wrap: wrap;
-
+    justify-content: center;
     margin-top: 1rem;
     margin-bottom: 2rem;
-
 }
 
 .first_section{
@@ -29,10 +16,6 @@
     margin-top: 1rem;
     margin-left: 1rem;
     font-weight: 600;
-}
-
-.data{
-    width: 65%;
 }
 
 .data h2{
@@ -54,11 +37,41 @@
 
 .stats{
     display: flex;
-    flex-direction: row;    
 }
 
 .stats p{
     margin-right: 1rem;
     font-weight: 500;
     font-family: Times, serif;
+}
+
+@media screen and (max-width: 719px){
+    .container{
+        flex-direction: column;
+    }
+
+    .first_section{
+        flex-direction: column;
+        text-align: center;
+        margin: 0;
+    }
+
+    .first_section button{
+        width: 90%;
+        margin: auto;
+    }
+
+    .data{
+        margin-top: 1rem;
+        text-align: center;
+    }
+
+    .data button{
+        margin-top: 1rem;
+    }
+
+    .stats {
+        justify-content: center;
+        margin: 1rem;
+    }
 }
