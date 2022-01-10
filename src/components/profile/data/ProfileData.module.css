@@ -1,10 +1,21 @@
-.container{
+/* .container{
     display: flex;
     flex-direction: row;
     margin-top: 1rem;
     margin-bottom: 2rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid #ccc;
+
+    border: 1px solid red;
+} */
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+
 }
 
 .first_section{

@@ -1,61 +1,51 @@
-
 header {
   background: white;
   border-bottom: 1px solid #ccc;
   width: 100% !important;
   height: 4rem;
+  display: flex;
 }
 
-header .navbar{
+header .navbar {
+  height: 100%;
+  width: 100%;
+  max-width: 960px;
+  margin: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 65%;
-  margin: auto;
-  height: 100%;
 }
 
-.navbar h1 {
-  font-family: 'Billabong';
+header .navbar h1 {
+  font-family: "Billabong";
   font-weight: 300;
   color: black;
   line-height: 50%;
+  padding-left: 1rem;
 }
 
-.buttons{
-  display: flex;
-  flex-direction: row;
-  padding-top: 0.5rem;  
-}
-
-.logo:hover{
-  cursor: pointer;
-}
-
-.logo:active{
-  color: #ccc;
-}
-
-.logo::selection{
-  background: transparent;
-}
-
-.input_search {
+header .navbar input {
   border: none;
   border-radius: 0.2rem;
   border: 1px solid #cccc;
-  height: 2rem;
-  width: 16rem;
-  font-size: 1rem;
-  margin-top: 0.8rem;
-  margin-left: 5rem;
-  padding-left: 1rem;
+  height: 30%;
+  padding: 0.5rem;
+  margin-top: 0.6rem;
+  margin-left: 8.5rem;
+  width: 100%;
+  max-width: 15rem;
+  font-size: 1rem;  
   color: black;
   background-color: #fafafa;
 }
 
-.input_search:focus {
+header .navbar input:focus {
   outline: none;
   border: 1px solid gray;
 }
 
+header .navbar .buttons{
+  display: flex;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+}

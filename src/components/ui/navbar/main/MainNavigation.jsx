@@ -6,7 +6,7 @@ import { NavbarButtonProfile } from '../buttons/profile/NavbarButtonProfile';
 import { NavbarIcons } from '../icons/NavbarIcons';
 import { useLocation } from 'react-router-dom';
 
-export const MainNavigation = ({user}) => {
+export const MainNavigation = ({ user }) => {
     const history = useHistory();
 
     const inputSearchRef = useRef();
@@ -41,11 +41,11 @@ export const MainNavigation = ({user}) => {
     return (
         <header>
             <div className={classes.navbar}>
-                <h1 className={classes.logo} onClick={handleHomeClick}>Fakegram</h1>
-                <input type="text" className={classes.input_search} ref={inputSearchRef} placeholder="Busca" onKeyUp={handleSearchClick} />
-                <div className={classes.buttons}>
-                    <NavbarIcons user={user} option={option}/>
-                    <NavbarButtonProfile imageProfile={user.imageProfile} option={option}/>
+                <h1 onClick={handleHomeClick}>Fakegram</h1>
+                <input type="text" ref={inputSearchRef} placeholder="Busca" onKeyUp={handleSearchClick} />
+                <div className={classes.buttons} id="right">
+                    <NavbarIcons user={user} option={option} />
+                    <NavbarButtonProfile imageProfile={user.imageProfile} option={option} />
                 </div>
             </div>
         </header>

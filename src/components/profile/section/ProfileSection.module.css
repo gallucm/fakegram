@@ -1,7 +1,5 @@
 .container{
     height: auto;
     margin: auto;
-    max-height: 600px;
-    overflow-y: none;
     width: 65%;
 }
