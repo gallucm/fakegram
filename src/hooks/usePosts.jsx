@@ -23,16 +23,22 @@ export const usePosts = () => {
     }
 
     const createPost = async (post) => {
+        dispatch(uiActions.setLoading(true));
+
         const data = await uploadImagePost(post.file);
 
         if (data) {
             try {
-                await savePost(post.description, data, post.user);
-                getPosts(post.user.uid);
+                const postObject = await savePost(post.description, data, post.user);
+
+                if (postObject)
+                    dispatch(profileActions.addPost(postObject));
             } catch (error) {
                 throw error;
             }
         }
+
+        dispatch(uiActions.setLoading(false));
     }
 
     const deletePost = async (pid, imageName) => {

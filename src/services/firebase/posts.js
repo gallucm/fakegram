@@ -38,6 +38,11 @@ export const savePost = async (description, image, user) => {
     } catch(error) {
         throw error;
     }
+
+    return {
+        pid: newPostId,
+        ...object
+    };
 }
 
 export const deletePostById = async (postId, postImageName) => {
