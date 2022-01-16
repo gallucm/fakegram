@@ -7,6 +7,8 @@ import classes from './PostContent.module.css';
 
 export const PostContent = ({ post }) => {
 
+    const { comments, pid, userData: { username, imageProfile} } = post;
+
     const handleMoveScroll = () => {
         const postComments = document.getElementById('middleContent');
         postComments.scrollTop = postComments.scrollHeight;
@@ -14,12 +16,15 @@ export const PostContent = ({ post }) => {
 
     return (
         <div className={classes.container}>
-            <PostContentHeader post={post} />
+            <PostContentHeader username={username} imageProfile={imageProfile} />
             <div id="middleContent" className={classes.middle_content}>
                 <PostContentDescription post={post} />
-                <PostContentComments pid={post.pid}/>
+                {
+                    comments && comments.length > 0 &&
+                    <PostContentComments comments={comments}/>
+                }
             </div>
-            <PostContentInput pid={post.pid} onMoveScroll={handleMoveScroll}/>
+            <PostContentInput pid={pid} onMoveScroll={handleMoveScroll}/>
         </div>
     )
 }

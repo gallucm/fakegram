@@ -33,7 +33,7 @@ export const Post = ({ post }) => {
             }
 
             <div key={post} className={classes.post}>
-                <img src={post.image} alt='post' onLoad={handleLoadImage} style={imageLoaded ? { display: 'inherit' } : { display: 'none' }} onClick={handleOpenModal}/>
+                <img src={post.imageUrl} alt='post' onLoad={handleLoadImage} style={imageLoaded ? { display: 'inherit' } : { display: 'none' }} onClick={handleOpenModal}/>
                 {
                     !imageLoaded &&
                     <Loading />

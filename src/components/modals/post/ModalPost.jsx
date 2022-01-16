@@ -7,6 +7,8 @@ import { PostContent } from './content/PostContent';
 
 export const ModalPost = ({ open, onCloseModal, post }) => {
 
+    const { imageUrl } = post;
+
     return (
         <>
             <Modal
@@ -17,8 +19,8 @@ export const ModalPost = ({ open, onCloseModal, post }) => {
             >
                 <Box className={classes.box}>
                     <section className={classes.container}>
-                        <PostImage image={post.image} />
-                        <PostContent post={post} />
+                        <PostImage image={imageUrl} />
+                        <PostContent post={post}/>
                     </section>
                 </Box>
             </Modal>

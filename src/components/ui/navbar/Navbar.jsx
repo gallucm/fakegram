@@ -5,22 +5,22 @@ import { MainNavigation } from './main/MainNavigation';
 
 export const Navbar = (props) => {
 
-    const { user } = useSelector(state => state.auth);
+    const { data } = useSelector(state => state.auth);
 
     const childrenWithProps = React.Children.map(props.children, child => {
         if (React.isValidElement(child)) {
-            return React.cloneElement(child, { userProp: user});
+            return React.cloneElement(child, { userProp: data});
         }
         return child;
     });
 
-    if (!user) {
+    if (!data) {
         return <Loading size='large' />
     }
 
     return (
         <>
-            <MainNavigation user={user} />
+            <MainNavigation user={data} />
             <main>
                 {childrenWithProps} 
             </main>

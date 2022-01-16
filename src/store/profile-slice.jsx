@@ -42,16 +42,15 @@ const profileSlice = createSlice({
             state.postSelected = null;
         },
 
-        setComments: (state, action) => {
-            state.postSelected.comments = action.payload;
-        },
-
         addComment: (state, action) => {
-            state.postSelected.comments.push(action.payload);
-        },
 
-        removeComment: (state, action) => {
-            state.postSelected.comments = state.postSelected.comments.filter(comment => comment.cid !== action.payload);
+            if (!state.postSelected.comments) {
+                state.postSelected.comments = [];
+            } else {
+                state.postSelected.comments = [...state.postSelected.comments, action.payload];
+            }
+
+            state.posts = state.posts.map(post => post.pid === state.postSelected.pid ? state.postSelected : post);
         },
     }
 });

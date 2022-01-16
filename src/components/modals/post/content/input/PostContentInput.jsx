@@ -10,7 +10,7 @@ export const PostContentInput = ({pid, onMoveScroll}) => {
 
     const [validSubmit, setValidSubmit] = useState(false);
     
-    const { user } = useSelector(state => state.auth);
+    const { data } = useSelector(state => state.auth);
 
     const handleReset = () => {
         inputRef.current.value = '';
@@ -20,16 +20,15 @@ export const PostContentInput = ({pid, onMoveScroll}) => {
         e.preventDefault();
 
         const commentObject = {
-            pid,
             user: {
-                username: user.username,
-                image: user.imageProfile
+                username: data.username,
+                image: data.imageProfile
             },
             comment: inputRef.current.value,
             createdAt: new Date()
         }
 
-        addComment(commentObject, handleReset);
+        addComment(pid, commentObject, handleReset);
 
         onMoveScroll();
     }

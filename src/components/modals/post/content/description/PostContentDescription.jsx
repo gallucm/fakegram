@@ -3,25 +3,28 @@ import ReactTimeAgo from 'react-time-ago';
 import classes from './PostContentDescription.module.css';
 
 export const PostContentDescription = ({post}) => {
+
+    const { description, createdAt, userData: {imageProfile, username} } = post;
+
     return (
         <div className={classes.container}>
             <div className={classes.image}>
-                <img src={post.imageProfile} alt="" />
+                <img src={imageProfile} alt="" />
             </div>
             <div className={classes.description}>
                 <div className={classes.data}>
                     <span>
                         <strong>
-                            {post.username}
+                            {username}
                         </strong>
                         <br/>
                         <p>
-                            {post.description}
+                            {description}
                         </p>
                     </span>
                 </div>
                 <div className={classes.date}>
-                    <ReactTimeAgo date={new Date(post.createdAt)} locale="es" title={post.createdAt}/>
+                    <ReactTimeAgo date={new Date(createdAt)} locale="es" title={createdAt}/>
                 </div>
             </div>
         </div>

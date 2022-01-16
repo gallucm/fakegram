@@ -2,9 +2,9 @@
 import { nApp } from "./config";
 
 export const uploadImagePost = async (image) => {
-    const name = 'pic_' + Date.now();
+    const name = 'post_' + Date.now();
     const storageRef = nApp.storage().ref();
-    const filePathRef = storageRef.child('images/post/' + name);
+    const filePathRef = storageRef.child('images/posts/' + name);
 
     const snapshot = await filePathRef.put(image);
 
@@ -14,12 +14,16 @@ export const uploadImagePost = async (image) => {
 }
 
 export const savePost = async (description, image, user) => {
-    const post = {
+    const object = {
         description: description,
-        image: image.url,
-        imageName: image.name,
-        ...user,
+        comments: [],
         createdAt: new Date(),
+        imageName: image.name,
+        imageUrl: image.url,
+        uid: user.uid,
+        userData: {
+            ...user
+        },
     };
 
     const postsRef = nApp.database().ref('posts');
@@ -27,7 +31,7 @@ export const savePost = async (description, image, user) => {
     const newPostId = newPostRef.key;
 
     const updates = {};
-    updates['/posts/' + newPostId ]= post;
+    updates['/posts/' + newPostId ]= object;
 
     try{
         await nApp.database().ref().update(updates);
@@ -60,9 +64,19 @@ export const getPostsByUser = async (user) => {
 
     await postsRef.orderByChild('uid').equalTo(user).once('value', (snapshot) => {
         snapshot.forEach((child) => {
+            let commentsArray = [];
+            if (child.val().comments) {
+                commentsArray = Object.keys(child.val().comments).map((key) => {
+                    return child.val().comments[key];
+                });
+            }
+            
+            const { comments, ...Other} = child.val();
+
             const post = {
                 pid: child.key,
-                ...child.val(),
+                comments: commentsArray,
+                ...Other
             };
 
             posts.push(post);
@@ -74,20 +88,23 @@ export const getPostsByUser = async (user) => {
 
 const deletePostImage = async (imageName) => {
     const storageRef = nApp.storage().ref();
-    const filePathRef = storageRef.child('images/post/' + imageName);
+    const filePathRef = storageRef.child('images/posts/' + imageName);
 
     await filePathRef.delete();
 }
 
-export const saveComment = async (comment) => {
+export const addPostComment = async (pid, comment) => {
     let done;
 
-    const commentRef = nApp.database().ref('comments');
-    const newCommentRef = commentRef.push();
+    const commentsRef = nApp.database().ref('posts/' + pid + '/comments');
+
+    const newCommentRef = commentsRef.push();
+
     const newCommentId = newCommentRef.key;
 
     const updates = {};
-    updates['/comments/' + newCommentId ]= comment;
+
+    updates['/posts/' + pid + '/comments/' + newCommentId] = comment;
 
     try{
         await nApp.database().ref().update(updates);
@@ -99,38 +116,15 @@ export const saveComment = async (comment) => {
     return done;
 }
 
-export const deleteComment = async (cid) => {
+export const deletePostComment = async (pid, cid) => {
     let done;
 
-    const commentRef = nApp.database().ref('comments');
-    const commentPath = commentRef.child(cid);
-
     try{
-        await commentPath.remove();
+        await nApp.database().ref('posts/' + pid + '/comments/' + cid).remove();
         done = true;
-    }
-    catch(error) {
+    } catch(error) {
         throw error;
     }
 
     return done;
-}
-
-export const getCommentsByPost = async (pid) => {
-    const comments = [];
-
-    const commentsRef = nApp.database().ref('comments');
-
-    await commentsRef.orderByChild('pid').equalTo(pid).once('value', (snapshot) => {
-        snapshot.forEach((child) => {
-            const comment = {
-                cid: child.key,
-                ...child.val(),
-            };
-
-            comments.push(comment);
-        });
-    });
-
-    return comments;
 }

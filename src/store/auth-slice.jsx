@@ -5,7 +5,7 @@ const initialState = {
     uid: null,
     token: null,
     isLoggedIn: false,
-    user: null,
+    data: null,
 }
 
 const authSlice = createSlice({
@@ -18,19 +18,19 @@ const authSlice = createSlice({
             state.token = user.token;
             state.uid = user.uid;
             state.isLoggedIn = true;
-            state.user = user.userData;
+            state.data = user.userData;
 
             saveLoginData(user);
         },
 
         updateUserImage: (state, action) => {
-            state.user.imageProfile = action.payload;
+            state.data.imageProfile = action.payload;
         },
 
         logout: (state) => {
             state.token = null;
             state.uid = null;
-            state.user = null;
+            state.data = null;
             state.isLoggedIn = false;
 
             clearLoginData();
@@ -40,7 +40,7 @@ const authSlice = createSlice({
             if (action.payload) {
                 state.token = action.payload.token;
                 state.uid = action.payload.uid;
-                state.user = action.payload.userData;
+                state.data = action.payload.userData;
                 state.isLoggedIn = true;
             }
         }

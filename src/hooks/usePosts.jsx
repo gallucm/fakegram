@@ -1,13 +1,12 @@
 import { useDispatch } from "react-redux";
-import { deletePostById, getCommentsByPost, getPostsByUser, uploadImagePost, savePost, saveComment } from "../services/firebase/posts";
+
+import { deletePostById, getPostsByUser, uploadImagePost, savePost, addPostComment } from "../services/firebase/posts";
+
 import { uiActions } from "../store/ui-slice";
 import { profileActions } from "../store/profile-slice";
-import { useState } from "react";
 
 export const usePosts = () => {
     const dispatch = useDispatch();
-
-    const [commentsLoaded, setCommentsLoaded] = useState(false);
 
     const getPosts = async (user) => {
         try {
@@ -36,21 +35,6 @@ export const usePosts = () => {
         }
     }
 
-    const getPostComments = async (pid) => {
-        try {
-            const comments = await getCommentsByPost(pid);
-
-            if (comments) {
-                dispatch(profileActions.setComments(comments));
-            }
-
-        } catch (error) {
-            throw error;
-        } finally {
-            setCommentsLoaded(true);
-        }
-    }
-
     const deletePost = async (pid, imageName) => {
         try {
             const deleted = await deletePostById(pid, imageName);
@@ -64,11 +48,11 @@ export const usePosts = () => {
         }
     }
 
-    const addComment = async (comment, reset) => {
+    const addComment = async (pid, comment, reset) => {
         try {
-            const ok = await saveComment(comment);
+            const done = await addPostComment(pid, comment);
 
-            if (ok) {
+            if (done) {
                 dispatch(profileActions.addComment(comment));
             }
         } catch (error) {
@@ -87,9 +71,7 @@ export const usePosts = () => {
     }
 
     return {
-        commentsLoaded,
         getPosts,
-        getPostComments,
         deletePost,
         createPost,
         addComment,
