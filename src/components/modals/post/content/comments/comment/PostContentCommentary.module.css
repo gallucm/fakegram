@@ -49,3 +49,16 @@
     font-style: italic;
     font-size: small;
 }
+
+.close{
+    margin: 1rem;
+    margin-top: 2rem;
+    font-size: 20px;
+    color: red;
+    display: none !important;
+}
+
+.container:hover .close{
+    display: block !important;
+    cursor: pointer;
+}

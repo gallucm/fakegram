@@ -1,10 +1,19 @@
 import ReactTimeAgo from 'react-time-ago';
 
-import classes from './PostContentCommentary.module.css';
+import CloseIcon from '@mui/icons-material/Close';
 
-export const PostContentCommentary = ({commentary}) => {
+import classes from './PostContentCommentary.module.css';
+import { usePosts } from '../../../../../../hooks/usePosts';
+
+export const PostContentCommentary = ({ pid, commentary }) => {
+
+    const { deleteComment } = usePosts();
 
     const { user, comment, createdAt } = commentary;
+
+    const handleDeleteComment = () => {
+        deleteComment(pid, commentary.cid);
+    }
 
     return (
         <div className={classes.container}>
@@ -17,16 +26,17 @@ export const PostContentCommentary = ({commentary}) => {
                         <strong>
                             {user.username}
                         </strong>
-                        <br/>
+                        <br />
                         <p>
                             {comment}
                         </p>
                     </span>
                 </div>
                 <div className={classes.date}>
-                    <ReactTimeAgo date={new Date(createdAt)} locale="es" title={createdAt}/>
+                    <ReactTimeAgo date={new Date(createdAt)} locale="es" title={createdAt} />
                 </div>
             </div>
+            <CloseIcon className={classes.close} titleAccess='Eliminar' onClick={handleDeleteComment}/>
         </div>
     )
 }

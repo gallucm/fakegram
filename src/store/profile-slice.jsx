@@ -52,6 +52,13 @@ const profileSlice = createSlice({
 
             state.posts = state.posts.map(post => post.pid === state.postSelected.pid ? state.postSelected : post);
         },
+
+        removeComment: (state, action) => {
+            state.postSelected.comments = state.postSelected.comments.filter(comment => comment.cid !== action.payload);
+
+            state.posts = state.posts.map(post => post.pid === state.postSelected.pid ? state.postSelected : post);
+        },
+
     }
 });
 

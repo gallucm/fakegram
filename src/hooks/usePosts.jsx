@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 
-import { deletePostById, getPostsByUser, uploadImagePost, savePost, addPostComment } from "../services/firebase/posts";
+import { deletePostById, getPostsByUser, uploadImagePost, savePost, addPostComment, deletePostComment } from "../services/firebase/posts";
 
 import { uiActions } from "../store/ui-slice";
 import { profileActions } from "../store/profile-slice";
@@ -62,6 +62,18 @@ export const usePosts = () => {
         }
     }
 
+    const deleteComment = async (pid, cid) => {
+        try {
+            const deleted = await deletePostComment(pid, cid);
+
+            if (deleted) {
+                dispatch(profileActions.removeComment(cid));
+            }
+        } catch (error) {
+            throw error;
+        }
+    }
+
     const setSelectedPost = (post) => {
         try {
             dispatch(profileActions.setPostSelected(post));
@@ -75,6 +87,7 @@ export const usePosts = () => {
         deletePost,
         createPost,
         addComment,
+        deleteComment,
         setSelectedPost
     }
 }

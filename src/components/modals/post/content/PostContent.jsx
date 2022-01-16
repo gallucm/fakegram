@@ -21,7 +21,7 @@ export const PostContent = ({ post }) => {
                 <PostContentDescription post={post} />
                 {
                     comments && comments.length > 0 &&
-                    <PostContentComments comments={comments}/>
+                    <PostContentComments comments={comments} pid={pid}/>
                 }
             </div>
             <PostContentInput pid={pid} onMoveScroll={handleMoveScroll}/>

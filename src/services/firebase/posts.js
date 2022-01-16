@@ -64,18 +64,22 @@ export const getPostsByUser = async (user) => {
 
     await postsRef.orderByChild('uid').equalTo(user).once('value', (snapshot) => {
         snapshot.forEach((child) => {
-            let commentsArray = [];
+            let comments = [];
+
             if (child.val().comments) {
-                commentsArray = Object.keys(child.val().comments).map((key) => {
-                    return child.val().comments[key];
+                comments = Object.keys(child.val().comments).map(key => {
+                    return {
+                        cid: key,
+                        ...child.val().comments[key]
+                    };    
                 });
             }
-            
-            const { comments, ...Other} = child.val();
+
+            const { comments: OldComments, ...Other} = child.val();
 
             const post = {
                 pid: child.key,
-                comments: commentsArray,
+                comments,
                 ...Other
             };
 
