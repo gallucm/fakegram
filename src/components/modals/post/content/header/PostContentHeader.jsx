@@ -8,8 +8,7 @@ export const PostContentHeader = ({imageProfile, username}) => {
         <div className={classes.container}>
             <img src={imageProfile} alt="" />
             <span>{username}</span>
-
-                <MoreHorizIcon className={classes.btn_options}/>       
+            <MoreHorizIcon className={classes.btn_options}/>       
         </div>
     )
 }

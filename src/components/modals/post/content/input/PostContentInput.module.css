@@ -1,35 +1,27 @@
 .container{
-    height: 3rem;
-    border: none;
+    margin-top: auto;
     border-top: 1px solid rgb(224, 224, 224);
+    height: 3rem;
     display: flex;
     flex-direction: row;
-    position: absolute;
-    bottom: 0;
-    margin: auto;
-    padding: 1rem;
-    width: calc(100% - 2rem);
 }
 
 .container textarea{
-    width: 80%;
-    height: 100%;
     border: none;
+    width: 80%;
     resize: none;
-    padding: 0;
     outline-style: none;
-    margin: 0.1rem;
+    padding: 0.5rem;
 }
 
 .container button{
     width: 20%;
     height: 100%;
-    border: none;
     background: white;
     color: #0095f6;
     font-weight: 600;
     cursor: pointer;
-    padding-right: 0.4rem;    
+    border: none;
 }
 
 .container button:disabled{

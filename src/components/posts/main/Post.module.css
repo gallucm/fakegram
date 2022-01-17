@@ -10,3 +10,9 @@
   height: 100%;
   cursor: pointer;
 }
+
+@media screen and (max-width: 390px) {
+  .post img{
+    height: 150px;
+  }
+}
