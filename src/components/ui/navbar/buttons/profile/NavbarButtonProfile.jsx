@@ -39,7 +39,7 @@ export const NavbarButtonProfile = ({ imageProfile, option }) => {
                         <Link to="/gallucm">Perfil</Link>
                     </div>
                     <div className={classes.link}>
-                        <Link to="/account">Configuración</Link>
+                        <Link to="/account/edit/">Configuración</Link>
                     </div>
                     <div className={classes.link} >
                         <Link to="/" onClick={handleLogoutClick}>Salir</Link>

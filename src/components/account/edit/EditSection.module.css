@@ -1,0 +1,72 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 2rem;
+    width: 65%;
+    
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    line-height: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.center {
+    justify-content: center;
+}
+
+.row label{
+    font-family: sans-serif;
+    font-weight: 600;
+    width: 100px;
+    text-align: right;
+    margin-right: 0.5rem;
+}
+
+.row input{
+    margin-left: 2rem;
+    width: 15rem;
+    height: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+.row textarea{
+    margin-left: 2rem;
+    width: 15rem;
+    height: 6rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding-left: 10px;
+    padding-top: 10px;
+    resize: none;
+}
+
+.row button{
+    margin-left: 4rem;
+    background: #0095f6;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    height: 2.5rem;
+    width: 100px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.row button:disabled{
+    background: #5db9f7;
+    cursor: not-allowed;
+}
+
+
+.row input:focus,
+.row textarea:focus{
+    outline: 1px solid gray;
+}

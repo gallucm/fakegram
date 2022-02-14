@@ -8,7 +8,7 @@ export const ProfileData = ({ user, posts }) => {
 
     const handleEditProfile = (e) => {
         e.preventDefault();
-        history.push('/account/details');
+        history.push('/account/edit/');
     }
 
     return (

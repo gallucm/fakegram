@@ -1,7 +1,46 @@
 .container{
-    margin: auto;
-    width: 80%;
-    margin-top: 6rem;
     display: flex;
-    border: 1px solid red;
+    margin: auto;
+
+    width: 100%;
+    max-width: 930px;
+    margin-top: 6rem;
+
+    background: white;
+
+    border: 1px solid #ccc;
+    height: auto;
+}
+
+.options{
+    border-right: 1px solid #ccc;
+    height: 500px;
+    width: 25%;
+}
+
+.options ul{
+    list-style: none;
+    padding: 0;
+}
+
+.options ul li{
+    height: 3rem;
+    text-align: justify;
+    line-height: 2rem;
+    padding-left: 2rem;
+}
+
+.options ul li a{
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+}
+
+.content{
+    width: 75%;
+}
+
+
+.active{
+    font-weight: 600;
 }
