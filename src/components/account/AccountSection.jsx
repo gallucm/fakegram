@@ -5,7 +5,8 @@ import classes from './AccountSection.module.css';
 import { EditSection } from './edit/EditSection';
 import { PasswordSection } from './pwd/PasswordSection';
 
-export const AccountSection = () => {
+export const AccountSection = ({userProp}) => {
+
   const location = useLocation();
 
   const path = location.pathname;
@@ -28,7 +29,7 @@ export const AccountSection = () => {
       </div>
 
       <div className={classes.content}>
-        {path === detailsLink && <EditSection />}
+        {path === detailsLink && <EditSection user={userProp}/>}
 
         {path === passwordLink && <PasswordSection />}
       </div>
