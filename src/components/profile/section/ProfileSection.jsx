@@ -11,7 +11,6 @@ import { PostsSection } from '../../posts/section/PostsSection';
 import { ProfileData } from '../data/ProfileData';
 
 export const ProfileSection = ({ userProp }) => {
-
     const location = useLocation();
 
     const { userData, setUserData, handleSearchAuthProfile } = useAuthProfile();

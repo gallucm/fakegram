@@ -37,7 +37,7 @@ export const App = () => {
       <PublicRoute exact path="/register" isAuthenticated={isLoggedIn && !loadUse} component={AuthPage} />
 
       <PrivateRoute exact path="/messages" isAuthenticated={isLoggedIn && !loadUse} component={MessagesPage} />
-      <PrivateRoute exact path="/account/detail" isAuthenticated={isLoggedIn && !loadUse} component={Account} />
+      <PrivateRoute exact path="/account/details" isAuthenticated={isLoggedIn && !loadUse} component={Account} />
       <PrivateRoute exact path="/:id" isAuthenticated={isLoggedIn && !loadUse} component={Profile} />
       <PrivateRoute exact path="/" isAuthenticated={isLoggedIn && !loadUse} component={Index} /> 
 

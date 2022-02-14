@@ -1,8 +1,15 @@
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { ProfileImage } from '../image/Profileimage';
 
 import classes from './ProfileData.module.css';
 
 export const ProfileData = ({ user, posts }) => {
+    const history = useHistory();
+
+    const handleEditProfile = (e) => {
+        e.preventDefault();
+        history.push('/account/details');
+    }
 
     return (
         <div className={classes.container}>
@@ -10,7 +17,7 @@ export const ProfileData = ({ user, posts }) => {
             <div className={classes.data}>
                 <div className={classes.first_section}>
                     <h2>{user.username}</h2>
-                    <button>Editar perfil</button>
+                    <button onClick={handleEditProfile}>Editar perfil</button>
                 </div>
                 <div className={classes.stats}>
                     <p><strong>{posts.length}</strong>  publicaciones</p>
