@@ -27,6 +27,21 @@ export const getProfileById = async (userId) => {
     return user;
 }
 
+export const updateProfileById = async (userId, profile) => {
+    let updated = false;
+
+    const userRef = firebase.database().ref('/users/' + userId);
+
+    try{
+        await userRef.update(profile);
+        updated = true;
+    } catch (ex){
+        throw new Error(ex.message);
+    }
+
+    return updated;
+}
+
 export const uploadImageProfile = async (userId, image) => {
     const storageRef = nApp.storage().ref();
     const filePathRef = storageRef.child('images/profile/' + image.name);

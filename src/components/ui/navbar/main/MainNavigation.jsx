@@ -45,7 +45,7 @@ export const MainNavigation = ({ user }) => {
                 <input type="text" ref={inputSearchRef} placeholder="Busca" onKeyUp={handleSearchClick} />
                 <div className={classes.buttons} id="right">
                     <NavbarIcons user={user} option={option} />
-                    <NavbarButtonProfile imageProfile={user.imageProfile} option={option} />
+                    <NavbarButtonProfile user={user} option={option} />
                 </div>
             </div>
         </header>

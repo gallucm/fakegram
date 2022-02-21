@@ -27,6 +27,10 @@ const authSlice = createSlice({
             state.data.imageProfile = action.payload;
         },
 
+        updateUserProfile: (state, action) => {
+            state.data = { ...state.data, ...action.payload };
+        },
+
         logout: (state) => {
             state.token = null;
             state.uid = null;

@@ -5,8 +5,7 @@ import classes from './AccountSection.module.css';
 import { EditSection } from './edit/EditSection';
 import { PasswordSection } from './pwd/PasswordSection';
 
-export const AccountSection = ({userProp}) => {
-
+export const AccountSection = ({ userProp }) => {
   const location = useLocation();
 
   const path = location.pathname;
@@ -15,24 +14,27 @@ export const AccountSection = ({userProp}) => {
   const passwordLink = "/account/password/change/";
 
   return (
-    <div className={classes.container}>
+    <>
+      <div className={classes.container}>
 
-      <div className={classes.options}>
-        <ul>
-          <li>
-            <NavLink to={detailsLink} activeClassName={classes.active}>Editar Perfil</NavLink>
-          </li>
-          <li>
-            <NavLink to={passwordLink} activeClassName={classes.active}>Cambiar Contraseña</NavLink>
-          </li>
-        </ul>
+        <div className={classes.options}>
+          <ul>
+            <li>
+              <NavLink to={detailsLink} activeClassName={classes.active}>Editar Perfil</NavLink>
+            </li>
+            <li>
+              <NavLink to={passwordLink} activeClassName={classes.active}>Cambiar Contraseña</NavLink>
+            </li>
+          </ul>
+        </div>
+
+        <div className={classes.content}>
+          {path === detailsLink && <EditSection user={userProp} />}
+
+          {path === passwordLink && <PasswordSection />}
+        </div>
       </div>
-
-      <div className={classes.content}>
-        {path === detailsLink && <EditSection user={userProp}/>}
-
-        {path === passwordLink && <PasswordSection />}
-      </div>
-    </div>
+        
+    </>
   )
 }

@@ -21,13 +21,12 @@ export const ProfileData = ({ user, posts }) => {
                 </div>
                 <div className={classes.stats}>
                     <p><strong>{posts.length}</strong>  publicaciones</p>
-                    <p><strong>{user.info.followers}</strong>  seguidores</p>
-                    <p><strong>{user.info.follows}</strong>  seguidos</p>
+                    <p><strong>0</strong>  seguidores</p>
+                    <p><strong>0</strong>  seguidos</p>
                 </div>
                 <strong><p>{user.name}</p></strong>
                 <p>
-                    Programador.
-                    San Miguel, Buenos Aires, Argentina.
+                    {user.info.description}
                 </p>
             </div> 
         </div>

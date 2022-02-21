@@ -44,3 +44,10 @@
 .active{
     font-weight: 600;
 }
+
+.alert_section{
+    width: 100%;
+    max-width: 930px;
+    margin: auto;
+    margin-top: 1rem;
+}
