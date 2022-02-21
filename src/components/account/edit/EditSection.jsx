@@ -1,4 +1,5 @@
 
+import { useState } from 'react';
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -10,6 +11,8 @@ import classes from './EditSection.module.css';
 
 export const EditSection = ({ user }) => {
   const dispatch = useDispatch();
+
+  const [enableSubmit, setEnableSubmit] = useState(false);
 
   const { message, loading } = useSelector(state => state.ui);
 
@@ -36,29 +39,68 @@ export const EditSection = ({ user }) => {
     dispatch(updateUserProfile(uid, userUpdate));
   }
 
+  const handleChange = (e) => {
+    e.preventDefault();
+
+    const { name: nameTarget, value } = e.target;
+
+    switch (nameTarget) {
+      case 'name':
+        if (value !== name)
+          setEnableSubmit(true);
+        else
+          setEnableSubmit(false);
+        break;
+
+      case 'username':
+        if (value !== username)
+          setEnableSubmit(true);
+        else
+          setEnableSubmit(false);
+        break;
+
+      case 'email':
+        if (value !== email)
+          setEnableSubmit(true);
+        else
+          setEnableSubmit(false);
+        break;
+
+      case 'description':
+        if (value !== description)
+          setEnableSubmit(true);
+        else
+          setEnableSubmit(false);
+        break;
+
+      default:
+        setEnableSubmit(false);
+    }
+  }
+
   return (
     <div className={classes.container}>
       <form action="POST" onSubmit={handleSubmitProfile}>
         <div className={classes.row}>
           <label htmlFor="name">Nombre</label>
-          <input type="text" name='name' defaultValue={name} ref={nameRef} />
+          <input type="text" name='name' defaultValue={name} ref={nameRef} onChange={handleChange} />
         </div>
         <div className={classes.row}>
           <label htmlFor="username">Nombre de Usuario</label>
-          <input type="text" name='username' defaultValue={username} ref={usernameRef} />
+          <input type="text" name='username' defaultValue={username} ref={usernameRef} onChange={handleChange} />
         </div>
         <div className={classes.row}>
           <label htmlFor="description">Biografía</label>
-          <textarea name="description" defaultValue={description} ref={descriptionRef}></textarea>
+          <textarea name="description" defaultValue={description} ref={descriptionRef} onChange={handleChange}></textarea>
         </div>
         <div className={classes.row}>
           <label htmlFor="email">Correo Electrónico</label>
-          <input type="email" name='name' defaultValue={email} ref={emailRef} />
+          <input type="email" name='name' defaultValue={email} ref={emailRef} onChange={handleChange} />
         </div>
         <div className={`${classes.row} ${classes.center}`}>
-          <button type="submit" disabled={loading}>
+          <button type="submit" disabled={loading || !enableSubmit}>
             {
-              loading ? <Loading size='small'/> : 'Guardar'
+              loading ? <Loading size='small' /> : 'Guardar'
             }
           </button>
         </div>

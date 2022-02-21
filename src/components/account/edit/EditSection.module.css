@@ -70,3 +70,7 @@
 .row textarea:focus{
     outline: 1px solid gray;
 }
+
+.disabled{
+    cursor: not-allowed;
+}
