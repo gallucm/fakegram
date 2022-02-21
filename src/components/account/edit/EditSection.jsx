@@ -16,8 +16,7 @@ export const EditSection = ({ user }) => {
 
   const { message, loading } = useSelector(state => state.ui);
 
-  const { uid, name, username, email, info } = user;
-  const { description } = info;
+  const { uid, name, username, email, description } = user;
 
   const nameRef = useRef('');
   const usernameRef = useRef('');
@@ -27,16 +26,14 @@ export const EditSection = ({ user }) => {
   const handleSubmitProfile = (e) => {
     e.preventDefault();
 
-    const userUpdate = {
+    const update = {
       name: nameRef.current.value,
       username: usernameRef.current.value,
       email: emailRef.current.value,
-      info: {
-        description: descriptionRef.current.value,
-      }
+      description: descriptionRef.current.value,
     }
 
-    dispatch(updateUserProfile(uid, userUpdate));
+    dispatch(updateUserProfile(uid, update));
   }
 
   const handleChange = (e) => {
@@ -95,7 +92,7 @@ export const EditSection = ({ user }) => {
         </div>
         <div className={classes.row}>
           <label htmlFor="email">Correo Electrónico</label>
-          <input type="email" name='name' defaultValue={email} ref={emailRef} onChange={handleChange} />
+          <input type="email" name='email' defaultValue={email} ref={emailRef} onChange={handleChange} />
         </div>
         <div className={`${classes.row} ${classes.center}`}>
           <button type="submit" disabled={loading || !enableSubmit}>

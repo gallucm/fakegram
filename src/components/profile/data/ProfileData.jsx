@@ -26,7 +26,7 @@ export const ProfileData = ({ user, posts }) => {
                 </div>
                 <strong><p>{user.name}</p></strong>
                 <p>
-                    {user.info.description}
+                    {user.description}
                 </p>
             </div> 
         </div>
