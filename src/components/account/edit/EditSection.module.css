@@ -1,15 +1,11 @@
 .container{
     display: flex;
-    flex-direction: column;
-    margin: auto;
     margin-top: 2rem;
-    width: 65%;
-    
+    justify-content: center;
 }
 
 .row{
     display: flex;
-    flex-direction: row;
     flex-wrap: wrap;
 
     line-height: 1rem;
@@ -73,4 +69,24 @@
 
 .disabled{
     cursor: not-allowed;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 809px){
+    .row{
+        flex-direction: column;
+    }
+
+    .row label{
+        margin: auto;
+        margin-bottom: 0.5rem;
+        width: auto;
+    }
+
+    .row input,
+    .row textarea,
+    .row button{
+        margin: auto;
+    }
 }
