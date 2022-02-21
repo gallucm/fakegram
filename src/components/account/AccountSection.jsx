@@ -19,12 +19,8 @@ export const AccountSection = ({ userProp }) => {
 
         <div className={classes.options}>
           <ul>
-            <li>
-              <NavLink to={detailsLink} activeClassName={classes.active}>Editar Perfil</NavLink>
-            </li>
-            <li>
-              <NavLink to={passwordLink} activeClassName={classes.active}>Cambiar Contraseña</NavLink>
-            </li>
+              <NavLink to={detailsLink} activeClassName={classes.active} className={classes.link}>Editar Perfil</NavLink>
+              <NavLink to={passwordLink} activeClassName={classes.active} className={classes.link}>Cambiar Contraseña</NavLink>
           </ul>
         </div>
 
