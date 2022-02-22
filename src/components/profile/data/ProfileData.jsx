@@ -24,10 +24,12 @@ export const ProfileData = ({ user, posts }) => {
                     <p><strong>0</strong>  seguidores</p>
                     <p><strong>0</strong>  seguidos</p>
                 </div>
-                <strong><p>{user.name}</p></strong>
-                <p>
-                    {user.description}
-                </p>
+                <div>
+                    <strong><p>{user.name}</p></strong>
+                    <p>
+                        {user.description}
+                    </p>
+                </div>
             </div> 
         </div>
     )

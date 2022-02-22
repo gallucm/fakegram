@@ -1,14 +1,12 @@
 .container{
     display: flex;
-    justify-content: center;
     margin-top: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 10rem;
 }
 
 .first_section{
     display: flex;
     flex-direction: row;
-    margin-top: 0.5rem;
 }
 
 .first_section button{
@@ -18,13 +16,13 @@
     font-weight: 600;
 }
 
+.data{
+    margin-left: 6rem;
+}
+
 .data h2{
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
-}
-
-.data p{
-    margin-top: 0.5rem;
 }
 
 .data button{
