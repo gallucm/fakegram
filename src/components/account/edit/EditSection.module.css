@@ -12,8 +12,29 @@
     margin-bottom: 1.5rem;
 }
 
-.center {
-    justify-content: center;
+.col{
+    margin-left: 3rem;
+}
+
+.col p{
+    padding: 0;
+    margin: 0;
+    margin-bottom: 0.3rem;
+    font-family: sans-serif;
+    font-weight: 600;
+}
+
+.col span{
+    color: #0095f6;
+    font-family: sans-serif;
+    cursor: pointer;
+}
+
+.row img{
+    width: 3rem;
+    border-radius: 50%;
+    margin-left: 3rem;
+    cursor: pointer;
 }
 
 .row label{
@@ -68,6 +89,10 @@
 
 .disabled{
     cursor: not-allowed;
+}
+
+.center {
+    justify-content: center;
 }
 
 /* Media Queries */

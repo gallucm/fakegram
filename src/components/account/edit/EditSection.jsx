@@ -4,6 +4,7 @@ import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { updateUserProfile } from '../../../actions/profile';
+import { ModalImageProfile } from '../../modals/imageProfile/ModalImageProfile';
 import { Alert } from '../../ui/alert/Alert';
 import { Loading } from '../../ui/loading/Loading';
 
@@ -13,6 +14,7 @@ export const EditSection = ({ user }) => {
   const dispatch = useDispatch();
 
   const [enableSubmit, setEnableSubmit] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
 
   const { message, loading } = useSelector(state => state.ui);
 
@@ -34,6 +36,14 @@ export const EditSection = ({ user }) => {
     }
 
     dispatch(updateUserProfile(uid, update));
+  }
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  }
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
   }
 
   const handleChange = (e) => {
@@ -77,7 +87,15 @@ export const EditSection = ({ user }) => {
 
   return (
     <div className={classes.container}>
+      <ModalImageProfile open={openModal} onCloseModal={handleCloseModal}/>
       <form action="POST" onSubmit={handleSubmitProfile}>
+        <div className={classes.row}>
+          <img src={user.imageProfile} alt="" />
+          <div className={classes.col}>
+            <p>gallucm</p>
+            <span onClick={handleOpenModal}>Cambiar foto de perfil</span>
+          </div>
+        </div>
         <div className={classes.row}>
           <label htmlFor="name">Nombre</label>
           <input type="text" name='name' defaultValue={name} ref={nameRef} onChange={handleChange} />

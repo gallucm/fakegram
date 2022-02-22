@@ -46,6 +46,7 @@
 @media screen and (max-width: 719px){
     .container{
         flex-direction: column;
+        margin-bottom: 2rem;
     }
 
     .first_section{
@@ -62,6 +63,7 @@
     .data{
         margin-top: 1rem;
         text-align: center;
+        margin-left: 0;
     }
 
     .data button{
