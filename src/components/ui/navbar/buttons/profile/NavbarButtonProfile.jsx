@@ -1,9 +1,8 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { logout } from "../../../../../actions/auth";
 
-import { authActions } from '../../../../../store/auth-slice';
-import { profileActions } from '../../../../../store/profile-slice';
 import { Loading } from "../../../loading/Loading";
 
 import classes from "./NavbarButtonProfile.module.css";
@@ -18,12 +17,10 @@ export const NavbarButtonProfile = ({ user, option }) => {
     }
 
     const handleLogoutClick = () => {
-        dispatch(authActions.logout());
-        dispatch(profileActions.removeUser());
+        dispatch(logout());
     }
 
     return (
-
         <>
             <div className={classes.dropdown}>
                 {

@@ -1,5 +1,5 @@
 // import { set, ref } from "firebase/database";
-import { auth, db } from "./config";
+import { auth, db, nApp } from "./config";
 import * as firebaseAuth from "firebase/auth";
 
 import { set, ref } from "firebase/database";
@@ -39,6 +39,23 @@ export const signIn = async (email, password) => {
     } catch (error) {
         throw new Error(error.message);
     }
+}
+
+export const getUserData = async (uid) => {
+    let userData = null;
+
+    try {
+        const userRef = nApp.database().ref('users/' + uid);
+
+        userData = await userRef.once('value');
+
+        userData = userData.val();
+        
+    } catch (error) {
+        throw new Error(error.message);
+    }
+
+    return userData;
 }
 
 const writeUserData = async (uid, email, username, fullname) => {

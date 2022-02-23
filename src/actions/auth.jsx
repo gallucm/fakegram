@@ -1,4 +1,5 @@
 import { signIn, signUp } from "../services/firebase/auth";
+import { clearLoginData, saveLoginData } from "../services/utils";
 import { authActions } from "../store/auth-slice";
 import { uiActions } from "../store/ui-slice";
 
@@ -32,12 +33,29 @@ export const loginUser = (user) => {
 
             const response = await signIn(email, password);
 
-            if (response)
+            if (response){
                 dispatch(authActions.login(response));            
+                saveLoginData({
+                    token: response.token,
+                    uid: response.uid
+                })
+            }
         } catch (error) {
             dispatch(setMessageError(error.message));
         } finally {
             dispatch(uiActions.setLoading(false));
+        }
+    }
+}
+
+export const logout = () => {
+    return async (dispatch) => {
+        try {
+            dispatch(authActions.logout());
+            clearLoginData();
+        }
+        catch (error) {
+            console.log(error);
         }
     }
 }

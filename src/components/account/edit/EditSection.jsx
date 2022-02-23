@@ -108,7 +108,7 @@ export const EditSection = ({ user }) => {
               <img src={user.imageProfile} alt="" />
           }
           <div className={classes.col}>
-            <p>gallucm</p>
+            <p>{username}</p>
             <span onClick={handleOpenModal}>Cambiar foto de perfil</span>
           </div>
         </div>
