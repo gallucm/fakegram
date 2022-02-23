@@ -42,14 +42,22 @@ export const updateUserProfile = (userId, profile) => {
     }
 }
 
-export const updateImage = async (username, image) => {
-    const urlUpdated = await uploadImageProfile(username, image);
-
-    if (urlUpdated) {
-        return urlUpdated;
+export const updateImage = (uid, image) => {
+    return async (dispatch) => {
+        try{
+            dispatch(uiActions.setLoading(true));
+            
+            const urlUpdated = await uploadImageProfile(uid, image);
+        
+            if (urlUpdated) {
+                dispatch(authActions.updateUserImage(urlUpdated));
+            }
+        } catch (ex){
+            dispatch(uiActions.setError('Ha ocurrido un error al actualizar la imagen.')); 
+        } finally {
+            dispatch(uiActions.setLoading(false));
+        }
     }
-
-    return null;
 }
 
 const cleanMessage = () => {

@@ -5,6 +5,11 @@
     align-items: center;
 }
 
+.loading_content{
+    margin-left: 3rem;
+    width: 3rem;
+}
+
 .row{
     display: flex;
     flex-wrap: wrap;

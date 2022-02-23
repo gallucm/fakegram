@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { updateUserProfile } from '../../../actions/profile';
+import { updateImage, updateUserProfile } from '../../../actions/profile';
 import { ModalImageProfile } from '../../modals/imageProfile/ModalImageProfile';
 import { Alert } from '../../ui/alert/Alert';
 import { Loading } from '../../ui/loading/Loading';
@@ -85,12 +85,28 @@ export const EditSection = ({ user }) => {
     }
   }
 
+  const handlerImageProfileChange = async (e) => {
+    handleCloseModal();
+    e.preventDefault();
+    const imageFile = e.target.files[0];
+
+    dispatch(updateImage(uid, imageFile));
+  }
+
   return (
     <div className={classes.container}>
-      <ModalImageProfile open={openModal} onCloseModal={handleCloseModal}/>
+      <ModalImageProfile open={openModal} onCloseModal={handleCloseModal} onImageChange={handlerImageProfileChange} />
       <form action="POST" onSubmit={handleSubmitProfile}>
         <div className={classes.row}>
-          <img src={user.imageProfile} alt="" />
+          {
+            loading
+              ?
+              <div className={classes.loading_content}>
+                <Loading size='small' />
+              </div>
+              :
+              <img src={user.imageProfile} alt="" />
+          }
           <div className={classes.col}>
             <p>gallucm</p>
             <span onClick={handleOpenModal}>Cambiar foto de perfil</span>

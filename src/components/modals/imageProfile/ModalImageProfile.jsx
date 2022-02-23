@@ -2,7 +2,8 @@ import { Box, Modal } from '@mui/material';
 
 import classes from './ModalImageProfile.module.css';
 
-export const ModalImageProfile = ({ open, onCloseModal }) => {
+export const ModalImageProfile = ({ open, onCloseModal, onImageChange }) => {
+    
     return (
         <>
             <Modal
@@ -17,7 +18,8 @@ export const ModalImageProfile = ({ open, onCloseModal }) => {
                             <p>Cambiar foto de perfil</p>
                         </div>
                         <div className={classes.upload}>
-                            <p>Subir foto</p>
+                            <label htmlFor="myFile">Subir foto</label>
+                            <input type="file" id="myFile" accept="image/png, image/gif, image/jpeg" onChange={onImageChange}/>
                         </div>
                         <div className={classes.delete}>
                             <p>Eliminar foto actual</p>

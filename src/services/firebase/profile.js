@@ -61,15 +61,15 @@ export const uploadImageProfile = async (userId, image) => {
 
 const updateImageProfile = async (userId, url) => {
     var updates = {};
-    let isOk = false;
+    let ok = false;
 
     try{
         updates['/users/' + userId + '/imageProfile'] = url;
         await firebase.database().ref().update(updates);
-        isOk = true;
+        ok = true;
     } catch(error) {
         throw new Error(error.message);
     } finally{
-        return isOk;
+        return ok;
     }
 }

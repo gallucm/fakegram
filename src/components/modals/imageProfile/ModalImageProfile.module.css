@@ -25,8 +25,6 @@ section{
   height: 100%;
 }
 
-
-
 .title,
 .upload,
 .delete{
@@ -38,7 +36,7 @@ section{
 }
 
 .title p,
-.upload p,
+.upload label,
 .delete p,
 .cancel p{
   font-family: sans-serif;
@@ -49,8 +47,18 @@ section{
   padding-bottom: 0.5rem;
 }
 
-.upload p{
+.upload{
+  height: 3rem;
+  line-height: 3rem;
+}
+
+.upload label{
   color: #0095f6;
+  cursor: pointer;
+}
+
+.upload input{
+  display: none;
 }
 
 .delete p{
