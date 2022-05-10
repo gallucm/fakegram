@@ -1,0 +1,33 @@
+@font-face {
+  font-family: "Billabong";
+  font-style: normal;
+  font-weight: normal;
+  src: url("../../../../assets/fonts/Billabong.woff");
+}
+
+.auth_section {
+  background-color: white;
+  border: 0.1px solid rgba(243, 243, 243, 1);
+  border-radius: 5px;
+  width: 350px;
+  height: auto;
+  text-align: center;
+}
+
+.center {
+  margin: 0;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.auth_section h1 {
+  font-family: "Billabong";
+  font-size: 3rem;
+  font-weight: 300;
+  margin-top: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}

@@ -1,0 +1,24 @@
+.container{
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.middle_content{
+    max-height: 39rem;
+    overflow-y: auto;
+}
+
+
+@media screen and (max-width: 1144px) {
+
+    .container{
+        height: 40%;
+    }
+}
+
+@media screen and (max-width: 803px) {
+    .container{
+        height: 50%;
+    }
+  }

@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: auto;
+    overflow-y: auto;
+
+    border-top: 1px solid #cccc;
+    
+    padding-top: 3rem;
+
+}

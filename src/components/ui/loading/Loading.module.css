@@ -1,0 +1,45 @@
+.small{
+    width: 20px;
+    height: 20px;
+
+    margin-top: 0 !important;
+    border: 5px solid #f3f3f3 !important;
+    border-top: 5px solid #7dc3f1 !important;
+}
+
+.medium{
+    width: 60px;
+    height: 60px;
+}
+
+.large{
+    width: 80px;
+    height: 80px;
+}
+
+.bigger{
+    width: 150px;
+    height: 150px;
+    margin-top: 10rem;
+}
+
+.spinner {
+    border: 10px solid #f3f3f3;
+    border-radius: 50%;
+    border-top: 10px solid #7dc3f1;
+    -webkit-animation: spin 2s linear infinite; /* Safari */
+    animation: spin 1.5s linear infinite;
+    margin: auto;
+    margin-top: 15%;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

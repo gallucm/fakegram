@@ -1,0 +1,17 @@
+.icons {
+  display: flex;
+  flex-direction: row;
+}
+
+.icon {
+  width: 35px !important;
+  height: 35px !important;
+  margin-bottom: 1.5rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+
+.link_default {
+  color: black;
+}

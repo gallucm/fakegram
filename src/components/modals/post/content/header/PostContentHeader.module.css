@@ -1,0 +1,32 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.container img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid rgb(248, 0, 124);
+    padding: 0.2rem;
+    margin: 1rem;
+    cursor: pointer;
+}
+
+.container span{
+    margin-top: 1.2rem;
+    font-family: 'Roboto', sans-serif;
+    line-height: 2rem;
+}
+
+.btn_options{
+    position: absolute;
+    right: 0.5rem;
+    top: 1rem;
+}
+
+.btn_options:hover{
+    cursor: pointer;
+}

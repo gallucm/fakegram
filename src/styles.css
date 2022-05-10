@@ -1,0 +1,26 @@
+html, body, #app, #app>div {
+    width: 100%;
+    margin: 0;
+}
+
+@font-face {
+    font-family: 'Billabong';
+    font-style: normal;
+    font-weight: normal;
+    src: url('./assets/fonts/Billabong.woff');
+  }
+
+body{
+    background-color: #fafafa;
+}
+  
+/* Safari */
+@-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

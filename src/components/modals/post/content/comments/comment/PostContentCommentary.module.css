@@ -1,0 +1,64 @@
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.image img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid rgb(248, 0, 124);
+    padding: 0.2rem;
+    margin: 1rem;
+    cursor: pointer;
+}
+
+.description{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.data{
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+
+    word-wrap: break-word;
+
+    width: 100%;
+}
+
+.data strong{
+    font-family: 'Times New Roman', Times, serif;
+    color: darkslategray;
+}
+
+.data span{
+    color: gray;
+    text-align: left;
+}
+
+.data span p {
+    margin: 0;
+    margin-top: 0.2rem;
+}
+
+.date time{
+    color: #ccc;
+    font-style: italic;
+    font-size: small;
+}
+
+.close{
+    margin: 1rem;
+    margin-top: 2rem;
+    font-size: 20px;
+    color: red;
+    display: none !important;
+}
+
+.container:hover .close{
+    display: block !important;
+    cursor: pointer;
+}

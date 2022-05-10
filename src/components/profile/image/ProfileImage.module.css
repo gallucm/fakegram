@@ -1,0 +1,19 @@
+.container {
+  margin-left: 4rem;
+}
+
+.container img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  cursor: default;
+  border: 2px solid #ccc;
+  padding: 0.3rem;
+  margin: auto;
+}
+
+@media screen and (max-width: 719px){
+  .container {
+    margin-left: 0;
+  }
+}
